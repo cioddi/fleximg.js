@@ -38,6 +38,6 @@ if(!is_file($scaled_filepath)){
 
 	$image->writeImage($scaled_filepath);
 	
-	header('Location: '.$_SERVER['REQUEST_URI']);
 }
+	header('Location: '.$_SERVER['REQUEST_URI']);
 ?>

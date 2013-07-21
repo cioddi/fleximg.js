@@ -1,7 +1,8 @@
 {
-  "name": "web",
+  "name": "fleximg.js",
   "version": "0.0.0",
   "dependencies": {
-    "jquery": "~2.0.3"
+    "jquery": "~2.0.3",
+    "touchy":"https://github.com/HotStudio/touchy.git"
   }
 }
