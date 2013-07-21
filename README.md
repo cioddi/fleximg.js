@@ -1,4 +1,5 @@
-#Deliver scaled images
+#fleximg.js
+Delivers scaled images
 
 ##Installation
 ###Requirements
