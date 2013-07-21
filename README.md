@@ -1,1 +1,1 @@
-#Deviler scaled images
+Deliver scaled images
