@@ -37,6 +37,7 @@ if(!is_file($scaled_filepath)){
 	$image->thumbnailImage(intval($width),0);
 
 	$image->writeImage($scaled_filepath);
-
+	
+	header('Location: '.$_SERVER['REQUEST_URI']);
 }
 ?>
