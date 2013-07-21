@@ -1,43 +1,78 @@
 <?php 
+class Fleximg{
+	var $filename,$originalpath,$targetpath;
 
-$file = $_SERVER['REQUEST_URI'];
-$file = explode('/',$file);
-$filename = $file[(count($file)-1)];
+	function __construct(){
+		$this->getFilename();
+		$this->getAnalizeRequest();
+		$this->getTargetpath();
+	}
 
-$original_file = $_SERVER['REQUEST_URI'];
-$original_file = explode('img/scale/',$original_file);
-$original_file = $original_file[(count($original_file)-1)];
-
-$original_file = explode('/',$original_file);
-
-$width = $original_file[0];
-$height = $original_file[1];
-unset($original_file[1]);
-unset($original_file[0]);
-$original_file = '/'.implode('/',$original_file);
+	function generate(){
+		if(!is_file($this->targetpath)){
+			$orig_filepath = getcwd().$this->original_file;
 
 
-unset($file[(count($file)-1)]);
+			$image = new Imagick($orig_filepath);
 
-$path = getcwd().implode('/',$file);
+			$image->thumbnailImage(intval($this->width),intval($this->height));
 
-if(!is_dir($path)){
-mkdir($path,0766,true);
+			$image->writeImage($this->targetpath);
+
+		}
+	}
+
+	function redirect(){
+		header('Location: '.$_SERVER['REQUEST_URI']);
+	}
+
+	function getFilename(){
+		if(!isset($this->filename)){
+
+			$file = $_SERVER['REQUEST_URI'];
+			$file = explode('/',$file);
+			$this->filename = $file[(count($file)-1)];
+		}
+		return $this->filename;
+	}
+
+	function getAnalizeRequest(){
+		$original_file = $_SERVER['REQUEST_URI'];
+		$original_file = explode('img/scale/',$original_file);
+		$original_file = $original_file[(count($original_file)-1)];
+
+		$original_file = explode('/',$original_file);
+
+		$this->width = $original_file[0];
+		$this->height = $original_file[1];
+		unset($original_file[1]);
+		unset($original_file[0]);
+		$this->original_file = '/'.implode('/',$original_file);
+	}
+
+	function getTargetpath(){
+		if(!isset($this->targetpath)){
+			$file = $_SERVER['REQUEST_URI'];
+			$file = explode('/',$file);
+			$filename = $file[(count($file)-1)];
+
+			unset($file[(count($file)-1)]);
+
+			$path = $_SERVER['DOCUMENT_ROOT'].implode('/',$file);
+
+			if(!is_dir($path)){
+				mkdir($path,0766,true);
+			}
+
+			$this->targetpath = $path.'/'.$filename;	
+		}
+		return $this->targetpath;
+	}
+
 }
 
+$fleximgObj = new Fleximg();
+$fleximgObj->generate();
+$fleximgObj->redirect();
 
-
-$scaled_filepath = $path.'/'.$filename;
-if(!is_file($scaled_filepath)){
-	$orig_filepath = getcwd().$original_file;
-
-
-	$image = new Imagick($orig_filepath);
-
-	$image->thumbnailImage(intval($width),0);
-
-	$image->writeImage($scaled_filepath);
-	
-}
-	header('Location: '.$_SERVER['REQUEST_URI']);
 ?>

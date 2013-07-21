@@ -15,9 +15,11 @@
 		}
 	</style>
 	<script src="/components/jquery/jquery.js"></script>
+	<script src="/components/touchy/jquery.touchy.min.js"></script>
 	<script src="/scale.js"></script>
 </head>
 <body>
+
 	<img data-src="/img/test.jpg" alt="" class="img_1">
 
 	<br>
@@ -25,7 +27,7 @@
 	<img data-src="/img/test.jpg" alt="" class="img_2">
 
 	<br>
-	
+
 	<img data-src="/img/test.jpg" alt="" class="img_3">
 </body>
 </html>

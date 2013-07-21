@@ -30,3 +30,4 @@ scale = {
 
 $(window).load(scale.readjust);
 $(window).resize(scale.latestResizeRefresh);
+$(window).bind('touchy-pinch', scale.latestResizeRefresh);
