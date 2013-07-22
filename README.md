@@ -12,7 +12,6 @@ Responsive image solution - Automatically scales image media files to fit the de
 1. Make sure your apache webserver with PHP, mod_rewrite and imagemagick is up an running
 2. Place the contents of this git project to your webroot and install requirements using ```$ bower install```
 3. If you already have a .htaccess file put the following lines in 
-
 ```
 <IfModule mod_rewrite.c>
 RewriteEngine On
@@ -22,7 +21,6 @@ RewriteRule img/scale/. /scale.php [L]
 
 </IfModule>
 ```
-
 
 4. Open demo.php to see if it works. You should see an image with cows in three different sizes.
 5. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
