@@ -28,8 +28,11 @@ RewriteRule img/scale/. /scale.php [L]
 5. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
 ``
 	<script src="/components/jquery/jquery.js"></script>
+
 	<script src="/components/hammerjs/dist/jquery.hammer.js"></script>
+
 	<script src="/scale.js"></script>
+	
 ``
 
 
