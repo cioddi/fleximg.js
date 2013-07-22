@@ -21,6 +21,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule img/scale/. /scale.php [L]
 
 </IfModule>```
+
 4. Open demo.php to see if it works. You should see an image with cows in three different sizes.
 5. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
 ```
