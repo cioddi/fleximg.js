@@ -14,17 +14,21 @@ class Fleximg{
 
 
 			$image = new Imagick($orig_filepath);
+			if($image->getImageWidth() > $this->width){
 
-			$image->thumbnailImage(intval($this->width),intval($this->height));
+				$image->thumbnailImage(intval($this->width),intval($this->height));
 
-			$image->writeImage($this->targetpath);
+				$image->writeImage($this->targetpath);
+
+				header('Location: '.$_SERVER['REQUEST_URI']);
+			}else{
+
+				header('Location: '.$this->original_file);
+			}
 
 		}
 	}
 
-	function redirect(){
-		header('Location: '.$_SERVER['REQUEST_URI']);
-	}
 
 	function getFilename(){
 		if(!isset($this->filename)){

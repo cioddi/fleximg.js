@@ -2,15 +2,22 @@ scale = {
 	readjust:function(){
 		$('img').each(function(idx,item){
 			if($(item).attr('data-src')){
-				$(item).attr('src','/img/scale/'+$(item).width()+'/0'+$(item).attr('data-src'));
+				var width = parseInt($(item).width(),10);
+				width = Math.floor(width * scale.getZoomRatio());
+
+				$(item).attr('src','/img/scale/'+width+'/0'+$(item).attr('data-src'));
 			}
 		});
+	},
+	getZoomRatio:function(){
+		return document.width / window.innerWidth;
 	},
 	latestResizeRefresh:function(){
 
 		if(scale.latestResize === null)setTimeout(scale.latestResizeCheck,scale.wait);
 
 		scale.latestResize = new Date();
+		
 
 	},
 	latestResizeCheck:function(){
@@ -30,4 +37,12 @@ scale = {
 
 $(window).load(scale.readjust);
 $(window).resize(scale.latestResizeRefresh);
-$(window).bind('touchy-pinch', scale.latestResizeRefresh);
+
+
+
+
+
+$(document).hammer().on("pinchin",scale.latestResizeRefresh);
+$(document).hammer().on("pinchout",scale.latestResizeRefresh);
+
+$(document).hammer().on("pinch",scale.latestResizeRefresh);

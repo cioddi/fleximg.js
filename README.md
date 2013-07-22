@@ -6,6 +6,7 @@ Delivers scaled images
 * mod_rewrite
 * PHP
 * jquery (install using "$ bower install")
+* hammer.js (to detect pinch zoom events "$ bower install")
 * Imagemagick
 
 

@@ -15,7 +15,9 @@
 		}
 	</style>
 	<script src="/components/jquery/jquery.js"></script>
-	<script src="/components/touchy/jquery.touchy.min.js"></script>
+
+	<script src="/components/hammerjs/dist/jquery.hammer.js"></script>
+	
 	<script src="/scale.js"></script>
 </head>
 <body>
