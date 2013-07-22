@@ -32,7 +32,8 @@ RewriteRule img/scale/. /scale.php [L]
 
 	<script src="/components/hammerjs/dist/jquery.hammer.js"></script>
 
-	<script src="/scale.js"></script>```
+	<script src="/scale.js"></script>
+```
 
 
 ##How it works
