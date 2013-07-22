@@ -1,15 +1,14 @@
 #fleximg.js
 Responsive image solution - Automatically scales image media files to fit the desired display dimensions
 
-##Installation
-###Requirements
+##Requirements
 * mod_rewrite
 * PHP
 * Imagemagick
 * jquery (install using "$ bower install")
 * hammer.js (to detect pinch zoom events "$ bower install")
 
-
+##Installation
 1. Make sure your apache webserver with PHP, mod_rewrite and imagemagick is up an running
 2. Place the contents of this git project to your webroot and install requirements using ```$ bower install```
 3. If you already have a .htaccess file put the following lines in 
