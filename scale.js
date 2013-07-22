@@ -10,14 +10,16 @@ scale = {
 		});
 	},
 	getZoomRatio:function(){
-		return document.width / window.innerWidth;
+		var ratio = $(document).width() / window.innerWidth;
+
+		if(isNaN(ratio))return 1;
+		return ratio;
 	},
 	latestResizeRefresh:function(){
 
 		if(scale.latestResize === null)setTimeout(scale.latestResizeCheck,scale.wait);
 
 		scale.latestResize = new Date();
-		
 
 	},
 	latestResizeCheck:function(){
@@ -38,11 +40,7 @@ scale = {
 $(window).load(scale.readjust);
 $(window).resize(scale.latestResizeRefresh);
 
+$(window).hammer().on("pinchin",scale.latestResizeRefresh);
+$(window).hammer().on("pinchout",scale.latestResizeRefresh);
 
-
-
-
-$(document).hammer().on("pinchin",scale.latestResizeRefresh);
-$(document).hammer().on("pinchout",scale.latestResizeRefresh);
-
-$(document).hammer().on("pinch",scale.latestResizeRefresh);
+$(window).hammer().on("pinch",scale.latestResizeRefresh);

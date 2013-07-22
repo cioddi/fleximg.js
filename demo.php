@@ -14,11 +14,6 @@
 			width:20%;
 		}
 	</style>
-	<script src="/components/jquery/jquery.js"></script>
-
-	<script src="/components/hammerjs/dist/jquery.hammer.js"></script>
-	
-	<script src="/scale.js"></script>
 </head>
 <body>
 
@@ -31,5 +26,9 @@
 	<br>
 
 	<img data-src="/img/test.jpg" alt="" class="img_3">
+
+	<script src="/components/jquery/jquery.js"></script>
+	<script src="/components/hammerjs/dist/jquery.hammer.js"></script>
+	<script src="/scale.js"></script>
 </body>
 </html>
