@@ -45,5 +45,6 @@ RewriteRule img/scale/. /scale.php [L]
 Copyright (c) 2012 Max Tobias Weber
 
 
-##copyright
-image - img/test.jpg (2013 Loren Kerns http://www.flickr.com/photos/lorenkerns/9262656978/)
+##additional copyright info
+###assets
+img/test.jpg (2013 Loren Kerns http://www.flickr.com/photos/lorenkerns/9262656978/)
