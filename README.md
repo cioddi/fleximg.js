@@ -41,8 +41,8 @@ RewriteRule img/scale/. /scale.php [L]
 2. After the page loads scale.js will be executed and check all img tags for data-src attributes. If found it will set the src of the img to ```/img/scale/{IMG_WIDTH}/{IMG_HEIGHT}/{IMG_FILEPATH}```.
 3. If that file exists it will be delivered by the apache. If the is no file the request will be passed to  scale.php which will scale the image to the requested dimensions, save it to the desired path and redirect to it again.
 
-##License
-MIT license - Copyright (c) 2012 Max Tobias Weber
+##MIT license
+Copyright (c) 2012 Max Tobias Weber
 
 
 ##copyright
