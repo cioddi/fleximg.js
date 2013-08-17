@@ -1,6 +1,7 @@
 scale = {
 	init:function(options){
-		scale.applyOptions(options);
+
+		if(typeof options !== 'undefined')scale.applyOptions(options);
 	},
 	defaultOptions:{
 		onPinchIn:true,
@@ -68,7 +69,8 @@ scale = {
 		});
 	},
 	applySteps:function(width){
-		return width+scale.steps-(width%scale.steps)
+		if(width%scale.steps)return width+scale.steps-(width%scale.steps);
+		return width;
 	},
 	getZoomRatio:function(){
 		var ratio = $(document).width() / window.innerWidth;

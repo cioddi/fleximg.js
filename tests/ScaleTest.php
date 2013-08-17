@@ -1,0 +1,37 @@
+<?php
+
+require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
+ 
+class FleximgTest extends PHPUnit_Extensions_SeleniumTestCase
+{
+    protected function setUp()
+    {
+        $this->setBrowser('*firefox');
+        $this->setBrowserUrl('http://127.0.0.1/');
+    }
+ 
+    public function testLoadPage()
+    {
+        $this->open('http://127.0.0.1/tests/testpage.html');
+        $this->assertTitle('Fleximg.js Testpage');
+    }
+
+    /**
+     * @depends testLoadPage
+     */
+    public function testFileCreation()
+    {
+        $this->assertTrue(file_exists('img/scale/300/0/img/test.jpg'));
+    }
+
+    /**
+     * @depends testFileCreation
+     */
+    public function testFileSize()
+    {
+        $image = new Imagick('img/scale/300/0/img/test.jpg');
+        
+        $this->assertTrue(($image->getImageWidth() == 300));
+    }
+}
+?>

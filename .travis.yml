@@ -1,0 +1,20 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+
+before_script:
+  - bower install
+  - pear channel-discover pear.phpunit.de
+  - pear install phpunit/PHP_Invoker
+  - pear install phpunit/DbUnit
+  - pear install phpunit/PHPUnit_Selenium
+  - pear install phpunit/PHPUnit_Story
+
+script: phpunit --verbose -c tests/phpunit.xml
+
+notifications:
+  email:
+    - maxtobiasweber@gmail.com
