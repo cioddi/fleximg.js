@@ -14,40 +14,40 @@ Responsive image solution - Automatically scales image media files to fit the de
 2. Place the contents of this git project to your webroot or somewhere else (e.g. {document_root}/lib/fleximg/) and install requirements using ```$ bower install```
 3. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in 
 
-```
-<IfModule mod_rewrite.c>
-RewriteEngine On
+		```
+		<IfModule mod_rewrite.c>
+		RewriteEngine On
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule img/scale/. /scale.php [L]
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteRule img/scale/. /scale.php [L]
 
-</IfModule>
-```
+		</IfModule>
+		```
 
 4. Open demo.php to see if it works. You should see an image with cows in three different sizes.
 5. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
 
-```
-	<script src="/components/jquery/jquery.js"></script>
+		```
+			<script src="/components/jquery/jquery.js"></script>
 
-	<script src="/components/hammerjs/dist/jquery.hammer.js"></script>
+			<script src="/components/hammerjs/dist/jquery.hammer.js"></script>
 
-	<script src="/scale.js"></script>
-```
+			<script src="/scale.js"></script>
+		```
 
 6. Init fleximg
 
-```
-<script>
-	scale.init({
-		onResize:true // default
-		onPinchIn:true, // default
-		onPinchOut:true, // default
-		onLoad:true, // default
-		steps:50 // default
-	});
-</script>
-```
+		```
+		<script>
+			scale.init({
+				onResize:true // default
+				onPinchIn:true, // default
+				onPinchOut:true, // default
+				onLoad:true, // default
+				steps:50 // default
+			});
+		</script>
+		```
 
 
 ##Options
