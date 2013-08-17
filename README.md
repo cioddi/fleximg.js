@@ -46,19 +46,19 @@ Responsive image solution - Automatically scales image media files to fit the de
 
 ##Options
 
-###steps
+###steps (int)
 If the exact display size of is always roundet up so it can be evenly divided by the steps value to make the caching more efficient and prevent creating thousands of versions of one file.
 
-###onResize
+###onResize (bool)
 Image sizes get readjusted on window resize event
 
-###onPinchIn
+###onPinchIn (bool)
 ... on Hammer.js pinchIn event
 
-###onPinchOut
+###onPinchOut (bool)
 ... on Hammer.js pinchOut event
 
-###onPinch
+###onPinch (bool)
 ... on Hammer.js pinch event
 
 
