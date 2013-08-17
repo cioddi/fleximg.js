@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	<img data-src="/img/test.jpg" alt="" class="img_1">
+	<img data-src="/img/test.jpg" alt="" width="300">
 
 	<br>
 
@@ -30,5 +30,10 @@
 	<script src="/components/jquery/jquery.js"></script>
 	<script src="/components/hammerjs/dist/jquery.hammer.js"></script>
 	<script src="/scale.js"></script>
+	<script>
+		scale.init({
+			onResize:true
+		});
+	</script>
 </body>
 </html>
