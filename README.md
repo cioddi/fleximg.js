@@ -14,7 +14,6 @@ Responsive image solution - Automatically scales image media files to fit the de
 2. Place the contents of this git project to your webroot or somewhere else (e.g. {document_root}/lib/fleximg/) and install requirements using ```$ bower install```
 3. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in 
 
-		```
 		<IfModule mod_rewrite.c>
 		RewriteEngine On
 
@@ -22,7 +21,6 @@ Responsive image solution - Automatically scales image media files to fit the de
 		RewriteRule img/scale/. /scale.php [L]
 
 		</IfModule>
-		```
 
 4. Open demo.php to see if it works. You should see an image with cows in three different sizes.
 5. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
@@ -37,7 +35,7 @@ Responsive image solution - Automatically scales image media files to fit the de
 
 6. Init fleximg
 
-		```
+		```javascript
 		<script>
 			scale.init({
 				onResize:true // default
