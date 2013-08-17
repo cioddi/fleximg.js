@@ -9,11 +9,11 @@ class Fleximg{
 	}
 
 	function generate(){
-		if(!is_file($this->targetpath)){
-			$orig_filepath = getcwd().$this->original_file;
+		error_log($this->original_file_absolute);
+		if(!is_file($this->targetpath) && is_file($this->original_file_absolute)){
 
 
-			$image = new Imagick($orig_filepath);
+			$image = new Imagick($this->original_file_absolute);
 			if($image->getImageWidth() > $this->width){
 
 				$image->thumbnailImage(intval($this->width),intval($this->height));
@@ -51,6 +51,7 @@ class Fleximg{
 		$this->height = $original_file[1];
 		unset($original_file[1]);
 		unset($original_file[0]);
+		$this->original_file_absolute = $_SERVER['DOCUMENT_ROOT'].'/'.implode('/',$original_file);
 		$this->original_file = '/'.implode('/',$original_file);
 	}
 
@@ -62,7 +63,7 @@ class Fleximg{
 
 			unset($file[(count($file)-1)]);
 
-			$path = $_SERVER['DOCUMENT_ROOT'].implode('/',$file);
+			$path = $_SERVER['DOCUMENT_ROOT'].'/'.implode('/',$file);
 
 			if(!is_dir($path)){
 				mkdir($path,0766,true);

@@ -1,8 +1,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-RewriteBase /img
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule img/scale/. /scale.php [L]
 
