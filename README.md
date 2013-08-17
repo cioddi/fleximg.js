@@ -2,7 +2,6 @@
 
 Responsive image solution - Automatically scales image media files to fit the desired display dimensions
 
-
 [![Build Status](https://travis-ci.org/cioddi/fleximg.js.png)](https://travis-ci.org/cioddi/fleximg.js)
 
 ##Requirements
