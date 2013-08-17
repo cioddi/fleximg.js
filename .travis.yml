@@ -6,6 +6,7 @@ php:
   - 5.5
 
 before_script:
+  - npm install -g bower
   - bower install
   - pear channel-discover pear.phpunit.de
   - pear install phpunit/PHP_Invoker
