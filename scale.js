@@ -1,7 +1,9 @@
 scale = {
 	init:function(options){
 
-		if(typeof options !== 'undefined')scale.applyOptions(options);
+		if(typeof options !== 'undefined')var options = {};
+		
+		scale.applyOptions(options);
 	},
 	defaultOptions:{
 		onPinchIn:true,
