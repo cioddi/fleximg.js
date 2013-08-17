@@ -53,16 +53,13 @@ If the exact display size of is always roundet up so it can be evenly divided by
 Image sizes get readjusted on window resize event
 
 ###onPinchIn
-Image sizes get readjusted on window resize event
+... on Hammer.js pinchIn event
 
 ###onPinchOut
-Image sizes get readjusted on window resize event
+... on Hammer.js pinchOut event
 
-###onPinchOut
-Image sizes get readjusted on window resize event
-
-###onResize
-Image sizes get readjusted on window resize event
+###onPinch
+... on Hammer.js pinch event
 
 
 ##How it works
