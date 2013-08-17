@@ -25,17 +25,14 @@ Responsive image solution - Automatically scales image media files to fit the de
 4. Open demo.php to see if it works. You should see an image with cows in three different sizes.
 5. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
 
-		```
 			<script src="/components/jquery/jquery.js"></script>
 
 			<script src="/components/hammerjs/dist/jquery.hammer.js"></script>
 
 			<script src="/scale.js"></script>
-		```
 
 6. Init fleximg
 
-		```javascript
 		<script>
 			scale.init({
 				onResize:true // default
@@ -45,7 +42,6 @@ Responsive image solution - Automatically scales image media files to fit the de
 				steps:50 // default
 			});
 		</script>
-		```
 
 
 ##Options
