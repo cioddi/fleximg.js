@@ -8,6 +8,10 @@ php:
 before_script:
   - ./tests/before_script.sh
 
+after_script:
+  - ls -la img/fleximg_scale
+  - sudo tail -f /var/log/apache2/error.log
+
 script: phpunit --verbose -c tests/phpunit.xml
 
 notifications:
