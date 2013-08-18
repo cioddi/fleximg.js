@@ -24,13 +24,13 @@ class FleximgTest extends PHPUnit_Extensions_SeleniumTestCase
      */
     public function testFileCreation()
     {
-        echo getcwd();
+        cmd('sudo chmod -R 777 img/fleximg_scale');
         $this->assertTrue(file_exists('img/fleximg_scale/300/0/img/test.jpg'));
     }
 
     public function testFileSize()
     {
-        $image = new Imagick('img/fleximg_scale/300/0/img/test.jpg');
+
         
         $this->assertTrue(($image->getImageWidth() == 300));
     }

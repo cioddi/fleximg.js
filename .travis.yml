@@ -16,7 +16,7 @@ after_script:
   - ls -la ./
   - ls -la components
 
-script: sudo phpunit --verbose -c tests/phpunit.xml
+script: phpunit --verbose -c tests/phpunit.xml
 
 notifications:
   email:
