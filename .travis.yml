@@ -9,8 +9,11 @@ before_script:
   - ./tests/before_script.sh
 
 after_script:
+  - pwd
   - ls -la img/fleximg_scale
   - sudo tail -f /var/log/apache2/error.log
+  - ls -la ./
+  - ls -la components
 
 script: phpunit --verbose -c tests/phpunit.xml
 
