@@ -15,7 +15,7 @@ class FleximgTest extends PHPUnit_Extensions_SeleniumTestCase
         $this->open('http://127.0.0.1/tests/testpage.html');
 
         $this->waitForPageToLoad ( "30000" );
-        
+
         $this->assertTitle('Fleximg.js Testpage');
     }
 
@@ -25,15 +25,12 @@ class FleximgTest extends PHPUnit_Extensions_SeleniumTestCase
     public function testFileCreation()
     {
         echo getcwd();
-        $this->assertTrue(file_exists('../img/fleximg_scale/300/0/img/test.jpg'));
+        $this->assertTrue(file_exists('img/fleximg_scale/300/0/img/test.jpg'));
     }
 
-    /**
-     * @depends testFileCreation
-     */
     public function testFileSize()
     {
-        $image = new Imagick('../img/fleximg_scale/300/0/img/test.jpg');
+        $image = new Imagick('img/fleximg_scale/300/0/img/test.jpg');
         
         $this->assertTrue(($image->getImageWidth() == 300));
     }
