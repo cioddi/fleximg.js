@@ -24,7 +24,7 @@ class FleximgTest extends PHPUnit_Extensions_SeleniumTestCase
      */
     public function testFileCreation()
     {
-        cmd('sudo chmod -R 777 img/fleximg_scale');
+        exec('sudo chmod -R 777 img/fleximg_scale');
         $this->assertTrue(file_exists('img/fleximg_scale/300/0/img/test.jpg'));
     }
 
