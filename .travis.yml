@@ -9,13 +9,6 @@ before_script:
   - printf "\n" | pecl install imagick
   - ./tests/before_script.sh
 
-after_script:
-  - pwd
-  - ls -la img/fleximg_scale
-  - sudo ls -la img/fleximg_scale/300/0/img
-  - sudo tail /var/log/apache2/error.log
-  - ls -la ./
-  - ls -la components
 
 script: phpunit --verbose -c tests/phpunit.xml
 
