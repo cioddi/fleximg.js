@@ -12,7 +12,7 @@ sudo sed -i -e "s,AllowOverride[ ]None,AllowOverride All,g" /etc/apache2/sites-a
 sudo /etc/init.d/apache2 restart
 
 echo "<?php php_info(); ?>" > info.php
-lynx --dump "http://localhost/info.php"
+lynx -dump "http://localhost/info.php"
 
 cat /etc/apache2/sites-available/default
 serverUrl='http://127.0.0.1:4444'
