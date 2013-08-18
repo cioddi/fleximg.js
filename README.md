@@ -1,6 +1,6 @@
 #fleximg.js
 
-Responsive image solution - Automatically scales image media files to fit the desired display dimensions
+Responsive image solution - Automatically scales image files to fit the desired display dimensions
 
 [![Build Status](https://travis-ci.org/cioddi/fleximg.js.png)](https://travis-ci.org/cioddi/fleximg.js)
 
@@ -36,12 +36,12 @@ Responsive image solution - Automatically scales image media files to fit the de
 6. Init fleximg
 
 		<script>
-			scale.init({
-				onResize:true // default
-				onPinchIn:true, // default
-				onPinchOut:true, // default
-				onLoad:true, // default
-				steps:50 // default
+			scale.init({ //all default values
+				onResize:		true,
+				onPinchIn:	true,
+				onPinchOut:	true,
+				onLoad:			true,
+				steps:			50
 			});
 		</script>
 
@@ -64,7 +64,7 @@ Image sizes get readjusted on window resize event
 ... on Hammer.js pinch event
 
 
-##How it works
+##Usage
 1. Set the src of img tags to the data-src attribute and make sure to create style definition which affect the image dimension.
 2. After the page loads scale.js will be executed and check all img tags for data-src attributes. If found it will set the src of the img to ```/img/scale/{IMG_WIDTH}/{IMG_HEIGHT}/{IMG_FILEPATH}```.
 3. If that file exists it will be delivered by the apache. If there is no file the request will be passed to scale.php which will scale the image to the requested dimensions, save it to the desired path and redirect to it again.

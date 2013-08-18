@@ -10,7 +10,8 @@ scale = {
 		onPinchOut:true,
 		onLoad:true,
 		onResize:true,
-		steps:50
+		steps:50,
+		img_folder:'/img'
 	},
 	getOptionsObject:function(options){
 		return $.extend(scale.defaultOptions,options);
@@ -65,7 +66,7 @@ scale = {
 				if(resize){
 
 					$(item).attr('current-size',width);
-					$(item).attr('src','/img/scale/'+width+'/0'+$(item).attr('data-src'));
+					$(item).attr('src',scale.img_folder+'/fleximg_scale/'+width+'/0'+$(item).attr('data-src'));
 				}
 			}
 		});

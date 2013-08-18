@@ -1,4 +1,11 @@
 <?php
+/**
+* class Fleximg
+* 
+* @description  Simple Javascript/PHP responsive image loader
+* @author       Max Tobias Weber (Maxtobiasweber@gmail.com)
+* 
+*/
 
 class Fleximg{
 	var $filename,$originalpath,$targetpath;
@@ -42,7 +49,7 @@ class Fleximg{
 
 	function getAnalizeRequest(){
 		$original_file = $_SERVER['REQUEST_URI'];
-		$original_file = explode('img/scale/',$original_file);
+		$original_file = explode('fleximg_scale/',$original_file);
 		$original_file = $original_file[(count($original_file)-1)];
 
 		$original_file = explode('/',$original_file);
