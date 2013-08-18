@@ -1,6 +1,5 @@
 sudo apt-get update > /dev/null
-sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 php5-curl php5-intl lynx
-
+sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 php5-curl php5-intl php5-imagick
 chmod 777 /home/travis/build/cioddi/fleximg.js/img/fleximg_scale
 
 sudo sed -i -e "s,/var/www,/home/travis/build/cioddi/fleximg.js,g" /etc/apache2/sites-available/default
