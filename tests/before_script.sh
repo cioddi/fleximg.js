@@ -6,7 +6,7 @@ chmod 777 /home/travis/build/cioddi/fleximg.js/img/fleximg_scale
 
 sudo sed -i -e "s,/var/www,/home/travis/build/cioddi/fleximg.js,g" /etc/apache2/sites-available/default
 sudo sed -i -e "s,AllowOverride[ ]None,,g" /etc/apache2/sites-available/default
-sudo sed -i -e "s,Order[ ]allow,deny,,g" /etc/apache2/sites-available/default
+sudo sed -i -e "s,Order[ ]allow\,deny,,g" /etc/apache2/sites-available/default
 
 
 sudo /etc/init.d/apache2 restart
