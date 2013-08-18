@@ -7,7 +7,7 @@ php:
 
 before_script:
   - ./tests/before_script.sh
-  - pecl install imagick
+  - printf "\n" | pecl install imagick
 
 after_script:
   - pwd
