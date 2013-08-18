@@ -31,7 +31,7 @@ class FleximgTest extends PHPUnit_Extensions_SeleniumTestCase
     public function testFileSize()
     {
 
-        
+        $image = new Imagick('img/fleximg_scale/300/0/img/test.jpg');
         $this->assertTrue(($image->getImageWidth() == 300));
     }
 }
