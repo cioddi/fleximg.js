@@ -11,7 +11,7 @@ before_script:
 after_script:
   - pwd
   - ls -la img/fleximg_scale
-  - ls -la img/fleximg_scale/300/0
+  - sudo ls -la img/fleximg_scale/300/0
   - sudo tail /var/log/apache2/error.log
   - ls -la ./
   - ls -la components
