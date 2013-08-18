@@ -72,6 +72,7 @@ class Fleximg{
 
 			$path = $_SERVER['DOCUMENT_ROOT'].'/'.implode('/',$file);
 
+			error_log($path);
 			if(!is_dir($path)){
 				mkdir($path,0766,true);
 			}
