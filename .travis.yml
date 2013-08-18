@@ -6,13 +6,7 @@ php:
   - 5.5
 
 before_script:
-  - npm install -g bower
-  - bower install
-  - pear channel-discover pear.phpunit.de
-  - pear install phpunit/PHP_Invoker
-  - pear install phpunit/DbUnit
-  - pear install phpunit/PHPUnit_Selenium
-  - pear install phpunit/PHPUnit_Story
+  - ./tests/before_script.sh
 
 script: phpunit --verbose -c tests/phpunit.xml
 
