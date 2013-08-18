@@ -4,9 +4,9 @@ sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 php5-curl php5-i
 sudo a2enmod rewrite
 chmod 777 /home/travis/build/cioddi/fleximg.js/img/fleximg_scale
 
-sudo sed -i -e "s,/var/www,/home/travis/build/cioddi/fleximg.js,g" /etc/apache2/sites-available/default
-sudo sed -i -e "s,AllowOverride\sNone,\s,g" /etc/apache2/sites-available/default
-sudo sed -i -e "s,Order\sallow,deny,\s,g" /etc/apache2/sites-available/default
+sudo sed -i -e -r "s,/var/www,/home/travis/build/cioddi/fleximg.js,g" /etc/apache2/sites-available/default
+sudo sed -i -e -r "s,AllowOverride\sNone,,g" /etc/apache2/sites-available/default
+sudo sed -i -e -r "s,Order\sallow,deny,,g" /etc/apache2/sites-available/default
 
 
 sudo /etc/init.d/apache2 restart
