@@ -70,7 +70,7 @@ class Fleximg{
 
 			unset($file[(count($file)-1)]);
 
-			$path = $_SERVER['DOCUMENT_ROOT'].'/'.implode('/',$file);
+			$path = $_SERVER['DOCUMENT_ROOT'].implode('/',$file);
 
 			error_log($path);
 			if(!is_dir($path)){
