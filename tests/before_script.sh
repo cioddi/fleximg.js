@@ -12,8 +12,6 @@ firefoxFile=firefox.tar.bz2
 phpVersion=`php -v`
 
 
-npm install -g bower
-bower install
 pear channel-discover pear.phpunit.de
 pear install phpunit/PHP_Invoker
 pear install phpunit/DbUnit
@@ -37,3 +35,9 @@ if [ ! $? -eq 0 ]; then
 else
     echo "Finished setup"
 fi
+
+
+npm install -g bower
+bower install
+
+ls -la ./
