@@ -29,9 +29,9 @@
 	<div id="slider_display" class="block_center"><span class="value">10</span> %</div>
 	<img data-src="/img/test.jpg" class="img_1 block_center" >
 
-	<script src="/components/jquery/jquery.js"></script>
+	<script src="/bower_components/jquery/jquery.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<script src="/components/hammerjs/dist/jquery.hammer.js"></script>
+	<script src="/bower_components/hammerjs/dist/jquery.hammer.js"></script>
 	<script src="/scale.js"></script>
 	<script>
 		scale.init();
