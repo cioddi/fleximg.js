@@ -5,7 +5,7 @@ Responsive image solution - Automatically scales image files to fit the desired 
 [![Build Status](https://travis-ci.org/cioddi/fleximg.js.png)](https://travis-ci.org/cioddi/fleximg.js)
 
 ##Demo
-[http://fleximg.nettwurk.org/demos/scale.php]
+http://fleximg.nettwurk.org/demos/scale.php
 
 ##Requirements
 * mod_rewrite
