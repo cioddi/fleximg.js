@@ -2,7 +2,6 @@ language: php
 php:
 - 5.3
 before_script:
-- curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 - printf "\n" | pecl install imagick
 - ./tests/before_script.sh
 - ./tests/saucelab_test.sh
