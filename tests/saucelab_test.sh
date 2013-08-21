@@ -3,6 +3,9 @@ CONNECT_DIR="sauce-connect-$RANDOM"
 CONNECT_DOWNLOAD="Sauce_Connect.zip"
 READY_FILE="connect-ready-$RANDOM"
 
+
+curl -s https://raw.github.com/jlipps/sausage-bun/master/givememysausage.php | SAUCE_USERNAME=$SAUCE_USERNAME SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY php
+
 # Get Connect and start it
 mkdir -p $CONNECT_DIR
 cd $CONNECT_DIR
@@ -22,8 +25,6 @@ sudo apt-get install php-pear php5-curl php5-xdebug
 cd ..
 
 
-
-curl -s https://raw.github.com/jlipps/sausage-bun/master/givememysausage.php | SAUCE_USERNAME=$SAUCE_USERNAME SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY php
 
 pwd
 ls -la
