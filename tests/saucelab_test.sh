@@ -25,4 +25,4 @@ curl -s https://raw.github.com/jlipps/sausage-bun/master/givememysausage.php | S
 
 ls -la
 vendor/bin/sauce_config $SAUCE_USERNAME $SAUCE_ACCESS_KEY
-vendor/bin/phpunit tests/saucelabs/simpleDemoTest_iphone.php
+vendor/bin/phpunit tests/saucelabs/simpleDemoTest\_iphone.php
