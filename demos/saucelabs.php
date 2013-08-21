@@ -27,6 +27,7 @@
 <body>
 	<div id="slider" class="block_center"></div>
 	<div id="slider_display" class="block_center"><span class="value">10</span> %</div>
+	<div id="set_width_500" onclick="setWidth(500)" class="block_center">set fixed width</div>
 	<img id="img_1" data-src="/img/test.jpg" class="img_1 block_center" >
 
 	<script src="/bower_components/jquery/jquery.js"></script>

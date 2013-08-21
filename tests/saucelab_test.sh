@@ -1,0 +1,2 @@
+vendor/bin/sauce_config SAUCE_USERNAME SAUCE_ACCESS_KEY
+vendor/bin/phpunit tests/saucelabs/simpleDemoTest_iphone.php

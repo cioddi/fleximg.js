@@ -5,28 +5,31 @@ require_once 'vendor/autoload.php';
 class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
 {
     protected $base_url = 'http://fleximg.nettwurk.org';
-    protected $build = '0.1';
+    protected $build = '0.3';
 
     public static $browsers = array(
+        // array(
+        //     'browserName' => 'iphone',
+        //     'desiredCapabilities' => array(
+        //         'version' => '6.0',
+        //         'platform' => 'OS X 10.8'
+        //     )
+        // )
+        // ,array(
+        //     'browserName' => 'iphone',
+        //     'desiredCapabilities' => array(
+        //         'version' => '5.1',
+        //         'platform' => 'OS X 10.8'
+        //     )
+        // ),
         array(
-            'browserName' => 'iphone',
-            'desiredCapabilities' => array(
-                'version' => '6.0',
-                'platform' => 'OS X 10.8'
-            )
-        ),array(
-            'browserName' => 'iphone',
-            'desiredCapabilities' => array(
-                'version' => '5.1',
-                'platform' => 'OS X 10.8'
-            )
-        ),array(
             'browserName' => 'ipad',
             'desiredCapabilities' => array(
                 'version' => '6.0',
                 'platform' => 'OS X 10.8'
             )
-        ),array(
+        )
+        ,array(
             'browserName' => 'ipad',
             'desiredCapabilities' => array(
                 'version' => '5.1',
@@ -42,13 +45,6 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
         ),
         array(
             'browserName' => 'chrome',
-            'desiredCapabilities' => array(
-                'version' => '',
-                'platform' => 'Windows 8'
-            )
-        ),
-        array(
-            'browserName' => 'internet explorer',
             'desiredCapabilities' => array(
                 'version' => '',
                 'platform' => 'Windows 8'
@@ -66,15 +62,9 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
                 'platform' => 'Windows 7'
             )
         ),array(
-            'browserName' => 'internet explorer',
-            'desiredCapabilities' => array(
-                'version' => '8',
-                'platform' => 'Windows 7'
-            )
-        ),array(
             'browserName' => 'opera',
             'desiredCapabilities' => array(
-                'version' => '8',
+                'version' => '',
                 'platform' => 'Windows 7'
             )
         ),
@@ -110,28 +100,21 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
             'browserName' => 'chrome',
             'desiredCapabilities' => array(
                 'version' => '',
-                'platform' => 'Mac'
-            )
-        ),
-        array(
-            'browserName' => 'firefox',
-            'desiredCapabilities' => array(
-                'version' => '',
-                'platform' => 'Mac'
+                'platform' => 'OS X 10.8'
             )
         ),
         array(
             'browserName' => 'safari',
             'desiredCapabilities' => array(
-                'version' => '',
-                'platform' => 'Mac'
+                'version' => '6',
+                'platform' => 'OS X 10.8'
             )
         ),
         array(
-            'browserName' => 'chrome',
+            'browserName' => 'firefox',
             'desiredCapabilities' => array(
                 'version' => '',
-                'platform' => 'Android'
+                'platform' => 'OS X 10.6'
             )
         )
     );
@@ -139,7 +122,7 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
     public function setUpPage()
     {
 
-        $this->url('http://fleximg.nettwurk.org/demos/scale.php');
+        $this->url('http://fleximg.nettwurk.org/demos/saucelabs.php');
     }
 
     public function testInitialSrcSetting()
@@ -153,8 +136,9 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
     {
 
         $this->byCss('#set_width_500')->click();
-        sleep(5);
+        sleep(2);
         $this->assertContains('/500/',$this->byCss('.img_1')->attribute('src'));
 
     }
 }
+?>
