@@ -15,9 +15,9 @@ rm $CONNECT_DOWNLOAD
 java -jar Sauce-Connect.jar $SAUCE_USERNAME $SAUCE_ACCESS_KEY --readyfile $READY_FILE --tunnel-identifier $TRAVIS_JOB_NUMBER &
 
 # Wait for Connect to be ready before exiting
-# while [ ! -f $READY_FILE ]; do
-#   sleep .5
-# done
+while [ ! -f $READY_FILE ]; do
+  sleep .5
+done
 
 vendor/bin/sauce_config $SAUCE_USERNAME $SAUCE_ACCESS_KEY
 vendor/bin/phpunit tests/saucelabs/simpleDemoTest_iphone.php
