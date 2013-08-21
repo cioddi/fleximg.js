@@ -8,8 +8,8 @@ env:
     - secure: QTBgBF5JiP+LFibPhY0a6T2g2wEmxDzyZTw836B8VZaCem5ez/zCsizXkzDd4R5lNIeYQ2IcNQBU02wDguGIwvarehcucwi9K2YVUVctRmHgtL/kfunEl153QJxQpAd3ZP0i77te/jH+yX+cwckJKbKwB6jPBi29bYtALMUtSgU=
     
 before_script:
-  # - printf "\n" | pecl install imagick
-  # - ./tests/before_script.sh
+  - printf "\n" | pecl install imagick
+  - ./tests/before_script.sh
   - ./tests/saucelab_test.sh
 
 script: phpunit --verbose -c tests/phpunit.xml
