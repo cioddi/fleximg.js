@@ -6,6 +6,7 @@ env:
   global:
     - secure: dw64UG2EoceEm9mSwBY03iT53LAkL+zHxI9Mc+i7RI/FrpyZzrsdRTEh711HieAx70qJ3+fWrftd5Q9RuyqQUdhVpN8Y85eM/Wvm0isKUUD6QriM9CAqKM+nlohFSbZbyGS+48i238x1wGb9uJykWgoSuwWuQL0X3s3YFTrZxRk=
     - secure: DKCuht+Q83K05CKIyaapxTKy2pEPsMRLfBmxwOeFKuTrbKDh3IE6VP7oBeeBCvSkXdm7qZ4xM93nRaXYEPk8L9eETgtFA2VzxbKF+6pACGgUArVbIMWi823xV0TsZeg8QTk4Qf7IH05MwKbwljS+w/OOqLU6j2ADLDL2rXPopmM=
+    
 before_script:
   # - printf "\n" | pecl install imagick
   # - ./tests/before_script.sh
