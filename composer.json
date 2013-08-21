@@ -1,5 +1,6 @@
 {
     "require": {
-        "sauce/sausage": ">=0.9.1"
+        "sauce/sausage": ">=0.9.1",
+    		"sauce/connect": ">=3.0"
     }
 }
