@@ -27,7 +27,8 @@
 <body>
 	<div id="slider" class="block_center"></div>
 	<div id="slider_display" class="block_center"><span class="value">10</span> %</div>
-	<img data-src="/img/test.jpg" class="img_1 block_center" >
+	<div id="set_width_500" onclick="setWidth(500)">set width to 500px</div>
+	<img id="img_1" data-src="/img/test.jpg" class="img_1 block_center" >
 
 	<script src="/bower_components/jquery/jquery.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -49,6 +50,11 @@
 	    	}
 	    });
 	  });
+
+	  setWidth = function(value){
+	  	$('.img_1').css('width',value+'px');
+	    scale.latestResizeRefresh();
+	  }
 
 	</script>
 </body>

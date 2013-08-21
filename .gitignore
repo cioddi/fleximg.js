@@ -1,2 +1,4 @@
 bower_components/*
 .DS_Store
+vendor/*
+composer.lock
