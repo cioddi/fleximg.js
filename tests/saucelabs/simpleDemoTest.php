@@ -4,7 +4,7 @@ require_once 'vendor/autoload.php';
 
 class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
 {
-    protected $base_url = 'http://fleximg.nettwurk.org';
+    protected $base_url = 'http://localhost';
     protected $build = '0.3';
 
     public static $browsers = array(
@@ -122,7 +122,7 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
     public function setUpPage()
     {
 
-        $this->url('http://fleximg.nettwurk.org/demos/saucelabs.php');
+        $this->url('http://localhost/demos/saucelabs.php');
     }
 
     public function testInitialSrcSetting()
