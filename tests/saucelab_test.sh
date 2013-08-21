@@ -1,5 +1,5 @@
 CONNECT_URL="http://saucelabs.com/downloads/Sauce-Connect-latest.zip"
-CONNECT_DIR="/tmp/sauce-connect-$RANDOM"
+CONNECT_DIR="sauce-connect-$RANDOM"
 CONNECT_DOWNLOAD="Sauce_Connect.zip"
 READY_FILE="connect-ready-$RANDOM"
 
