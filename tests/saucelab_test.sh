@@ -19,5 +19,11 @@ while [ ! -f $READY_FILE ]; do
   sleep .5
 done
 
+sudo apt-get update
+sudo apt-get install php-pear php5-curl php5-xdebug
+
+mkdir sauce-demo && cd sauce-demo
+curl -s https://raw.github.com/jlipps/sausage-bun/master/givememysausage.php | SAUCE_USERNAME= $SAUCE_USERNAME SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY php
+
 vendor/bin/sauce_config $SAUCE_USERNAME $SAUCE_ACCESS_KEY
 vendor/bin/phpunit tests/saucelabs/simpleDemoTest_iphone.php
