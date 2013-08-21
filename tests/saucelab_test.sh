@@ -19,10 +19,13 @@ done
 sudo apt-get update
 sudo apt-get install php-pear php5-curl php5-xdebug
 
+cd ..
+
+
 
 curl -s https://raw.github.com/jlipps/sausage-bun/master/givememysausage.php | SAUCE_USERNAME=$SAUCE_USERNAME SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY php
 
-
+pwd
 ls -la
 vendor/bin/sauce_config $SAUCE_USERNAME $SAUCE_ACCESS_KEY
 vendor/bin/phpunit tests/saucelabs/simpleDemoTestIphone.php
