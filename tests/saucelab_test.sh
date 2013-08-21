@@ -7,6 +7,7 @@ sudo apt-get update
 sudo apt-get install php5-curl php5-xdebug
 
 curl -s https://raw.github.com/jlipps/sausage-bun/master/givememysausage.php | SAUCE_USERNAME=$SAUCE_USERNAME SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY php
+php composer.phar require sauce/connect
 
 vendor/bin/sauce_config $SAUCE_USERNAME $SAUCE_ACCESS_KEY
 
