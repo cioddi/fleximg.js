@@ -5,7 +5,7 @@ php:
 env:
   global:
     - secure: nK5WFJHTg8NLlK7gqDPlbqjiNWLQNhVKxiZpsahL9YXzF0YPnTvt14Fy63AVqPdxHkP6KRTRtRFHZYylw1EKFmLFsyhcQ99W/PHLQ/JyTCNWIIGUA9yw11Xmyj5acqGv8Oc1AM3bZ5R3YHQ9CioQcLFcGYmAu/Ti+oHTsFdkVsY=
-    - secure: OfCzzcQANLBaryAJnbdc9GBMsjGsEe2B5oKbhJOb8535jhgXPtgPXuPSFZgkaxwFp4zcZez3OFPMgJXA8KTiliGZd6YGBm+Td8ZqK7hlXG1keH3NljZhfRirduawNWSsXQX3qEqReEfsquZjy6n1W3GDhDPnkqkAp6HBHUEGFjQ=
+    - secure: QTBgBF5JiP+LFibPhY0a6T2g2wEmxDzyZTw836B8VZaCem5ez/zCsizXkzDd4R5lNIeYQ2IcNQBU02wDguGIwvarehcucwi9K2YVUVctRmHgtL/kfunEl153QJxQpAd3ZP0i77te/jH+yX+cwckJKbKwB6jPBi29bYtALMUtSgU=
     
 before_script:
   # - printf "\n" | pecl install imagick
