@@ -11,7 +11,7 @@ php composer.phar require "sauce/connect:>=3.0"
 
 vendor/bin/sauce_config $SAUCE_USERNAME $SAUCE_ACCESS_KEY
 
-vendor/bin/sauce_connect &
+vendor/bin/sauce_connect --readyfile $READY_FILE &
 # Get Connect and start it
 # mkdir -p $CONNECT_DIR
 # cd $CONNECT_DIR
@@ -21,9 +21,9 @@ vendor/bin/sauce_connect &
 # java -jar Sauce-Connect.jar $SAUCE_USERNAME $SAUCE_ACCESS_KEY -P 2000 --readyfile $READY_FILE --tunnel-identifier $TRAVIS_JOB_NUMBER &
 
 # Wait for Connect to be ready before exiting
-# while [ ! -f $READY_FILE ]; do
-#   sleep .5
-# done
+while [ ! -f $READY_FILE ]; do
+  sleep .5
+done
 
 
 # cd ..
