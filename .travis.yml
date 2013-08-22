@@ -9,8 +9,9 @@ env:
     
 before_script:
   - printf "\n" | pecl install imagick
+  - ./tests/setup/apache.sh
   - ./tests/before_script.sh
-  - ./tests/saucelab_test.sh
+  - ./tests/selenium.sh
 
 script: phpunit --verbose -c tests/phpunit.xml
 notifications:
