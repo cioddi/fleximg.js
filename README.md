@@ -29,7 +29,7 @@ http://fleximg.nettwurk.org/demos/scale.php
 
 		</IfModule>
 
-4. Open demo.php to see if it works. You should see an image with cows in three different sizes.
+4. Open demos/scale.php to see if it works. You should see a resizable image with cows.
 5. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
 
 		<script src="/components/jquery/jquery.js"></script>
