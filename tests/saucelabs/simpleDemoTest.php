@@ -61,7 +61,7 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
             'browserName' => 'internet explorer',
             'desiredCapabilities' => array(
                 'version' => '10',
-                'platform' => 'Windows 7'
+                'platform' => 'Windows 8'
             )
         ),array(
             'browserName' => 'internet explorer',
