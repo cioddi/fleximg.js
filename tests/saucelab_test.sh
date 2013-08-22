@@ -11,7 +11,7 @@ php composer.phar require "sauce/connect:>=3.0"
 
 vendor/bin/sauce_config $SAUCE_USERNAME $SAUCE_ACCESS_KEY
 
-vendor/bin/sauce_connect --readyfile $READY_FILE &
+vendor/bin/sauce_connect --readyfile $READY_FILE > vendor/sauceconnectlog &
 # Get Connect and start it
 # mkdir -p $CONNECT_DIR
 # cd $CONNECT_DIR
