@@ -2,10 +2,12 @@
 
 require_once 'vendor/autoload.php';
 
+define("TRAVIS_BUILD_NUMBER", getenv('TRAVIS_BUILD_NUMBER'));
+
 class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
 {
     protected $base_url = 'http://127.0.0.1/';
-    protected $build = '';
+    protected $build = TRAVIS_BUILD_NUMBER;
 
     public static $browsers = array(
         // array(
@@ -119,9 +121,6 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
         )
     );
     
-    public function setBuild($string_bn){
-        $this->build = getenv('TRAVIS_BUILD_NUMBER');
-    }
 
     public function setUpPage()
     {

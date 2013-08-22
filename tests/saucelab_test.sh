@@ -33,4 +33,4 @@ ifconfig
 pwd
 ls -la
 vendor/bin/phpunit tests/saucelabs/simpleDemoTestIphone.php
-# vendor/bin/phpunit tests/saucelabs/simpleDemoTest.php
+vendor/bin/phpunit tests/saucelabs/simpleDemoTest.php
