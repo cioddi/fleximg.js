@@ -29,7 +29,7 @@ vendor/bin/sauce_connect
 # cd ..
 
 
-
+ifconfig
 pwd
 ls -la
 vendor/bin/phpunit tests/saucelabs/simpleDemoTestIphone.php
