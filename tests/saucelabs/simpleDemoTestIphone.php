@@ -27,8 +27,9 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
     public function setUpPage()
     {
         $this->setBuild(getenv('TRAVIS_BUILD_NUMBER'));
-        $this->build = getenv('TRAVIS_BUILD_NUMBER');
-        
+        echo 'TRAVIS_BUILD_NUMBER';
+        echo $this->build = getenv('TRAVIS_BUILD_NUMBER');
+
         $this->url('http://127.0.0.1/demos/saucelabs.php');
     }
 
