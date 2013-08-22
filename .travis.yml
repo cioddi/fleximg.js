@@ -11,7 +11,7 @@ before_script:
   - printf "\n" | pecl install imagick
   - ./tests/setup/apache.sh
   - ./tests/before_script.sh
-  - ./tests/selenium.sh
+  - ./tests/setup/selenium.sh
 
 script: phpunit --verbose -c tests/phpunit.xml
 notifications:
