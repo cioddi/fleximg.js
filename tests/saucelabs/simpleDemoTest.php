@@ -4,7 +4,7 @@ require_once 'vendor/autoload.php';
 
 class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
 {
-    protected $base_url = 'http://localhost';
+    protected $base_url = 'http://127.0.0.1/';
     protected $build = getenv('TRAVIS_BUILD_NUMBER');
 
     public static $browsers = array(
@@ -122,7 +122,7 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
     public function setUpPage()
     {
 
-        $this->url('http://localhost/demos/saucelabs.php');
+        $this->url('http://127.0.0.1/demos/saucelabs.php');
     }
 
     public function testInitialSrcSetting()
