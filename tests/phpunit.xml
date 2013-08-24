@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="test-bootstrap.php"
-         backupGlobals="false"
+<phpunit backupGlobals="false"
          colors="true">
 
   <php>
@@ -15,7 +14,7 @@
 
   <testsuites>
     <testsuite name="ScaleTest">
-      <file>tests/ScaleTest.php</file>
+      <file>tests/travis/ScaleTest.php</file>
     </testsuite>
   </testsuites>
 </phpunit>
