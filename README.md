@@ -42,12 +42,12 @@ http://fleximg.nettwurk.org/demos/scale.php
 
 		<script>
 			scale.init({ //all default values
-				fireOnResize:		true,
+				fireOnResize:	true,
 				fireOnPinchIn:	true,
-				fireOnPinch:		true,
+				fireOnPinch:	true,
 				fireOnPinchOut:	true,
-				fireOnLoad:			true,
-				steps:			50
+				fireOnLoad:	true,
+				steps:	50
 			});
 		</script>
 
