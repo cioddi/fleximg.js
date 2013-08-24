@@ -6,10 +6,11 @@ scale = {
 		scale.applyOptions(options);
 	},
 	defaultOptions:{
-		onPinchIn:true,
-		onPinchOut:true,
-		onLoad:true,
-		onResize:true,
+		fireOnPinchIn:true,
+		fireOnPinchOut:true,
+		fireOnPinch:true,
+		fireOnLoad:true,
+		fireOnResize:true,
 		steps:50,
 		img_folder:'/img'
 	},
@@ -22,19 +23,19 @@ scale = {
 		for(var key in options){
 			if(options.hasOwnProperty(key)){
 				switch(key){
-					case 'onPinchIn':
+					case 'fireOnPinchIn':
 						if(options[key])$(window).hammer().on("pinchin",scale.latestResizeRefresh);
 						break;
-					case 'onPinchOut':
+					case 'fireOnPinchOut':
 						if(options[key])$(window).hammer().on("pinchout",scale.latestResizeRefresh);
 						break;
-					case 'onLoad':
+					case 'fireOnLoad':
 						if(options[key])$(window).load(scale.readjust);
 						break;
-					case 'onPinch':
+					case 'fireOnPinch':
 						$(window).hammer().on("pinch",scale.latestResizeRefresh);
 						break;
-					case 'onResize':
+					case 'fireOnResize':
 						$(window).resize(scale.latestResizeRefresh);
 						break;
 					default:

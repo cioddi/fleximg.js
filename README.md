@@ -18,7 +18,7 @@ http://fleximg.nettwurk.org/demos/scale.php
 
 ##Installation
 1. Make sure your apache webserver with PHP, mod_rewrite and imagemagick is up an running
-2. Place the contents of this git project to your webroot or somewhere else (e.g. {document_root}/lib/fleximg/) and install requirements using ```$ bower install```
+2. Place the contents of this git project somewhere under the document root (e.g. {document_root}/lib/fleximg/) and install requirements using ```$ bower install```
 3. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in 
 
 		<IfModule mod_rewrite.c>
@@ -42,10 +42,11 @@ http://fleximg.nettwurk.org/demos/scale.php
 
 		<script>
 			scale.init({ //all default values
-				onResize:		true,
-				onPinchIn:	true,
-				onPinchOut:	true,
-				onLoad:			true,
+				fireOnResize:		true,
+				fireOnPinchIn:	true,
+				fireOnPinch:		true,
+				fireOnPinchOut:	true,
+				fireOnLoad:			true,
 				steps:			50
 			});
 		</script>
@@ -56,16 +57,19 @@ http://fleximg.nettwurk.org/demos/scale.php
 ###steps (int)
 If the exact display size of is always roundet up so it can be evenly divided by the steps value to make the caching more efficient and prevent creating thousands of versions of one file.
 
-###onResize (bool)
+###fireOnResize (bool)
 Image sizes get readjusted on window resize event
 
-###onPinchIn (bool)
+###fireOnLoad (bool)
+Image sizes get readjusted on page load
+
+###fireOnPinchIn (bool)
 ... on Hammer.js pinchIn event
 
-###onPinchOut (bool)
+###fireOnPinchOut (bool)
 ... on Hammer.js pinchOut event
 
-###onPinch (bool)
+###fireOnPinch (bool)
 ... on Hammer.js pinch event
 
 
