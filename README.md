@@ -41,13 +41,13 @@ http://fleximg.nettwurk.org/demos/scale.php
 6. Init fleximg
 
 		<script>
-			scale.init({ //all default values
+			scale.init({ 		//all default values
 				fireOnResize:	true,
 				fireOnPinchIn:	true,
 				fireOnPinch:	true,
 				fireOnPinchOut:	true,
-				fireOnLoad:	true,
-				steps:	50
+				fireOnLoad:		true,
+				steps:			50
 			});
 		</script>
 
