@@ -19,18 +19,19 @@ http://fleximg.nettwurk.org/demos/scale.php
 ##Installation
 1. Make sure your apache webserver with PHP, mod_rewrite and imagemagick is up an running
 2. Place the contents of this git project somewhere under the document root (e.g. {document_root}/lib/fleximg/) and install requirements using ```$ bower install```
-3. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in 
+3. create the folder /img/fleximg_scale on your server and make sure its writable for the apache user
+4. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in (make sure in this line ``` RewriteRule img/fleximg_scale/. /lib/scale.php [L] ``` that /lib/scale.php points to scale.php on your server)
 
 		<IfModule mod_rewrite.c>
 		RewriteEngine On
 
 		RewriteCond %{REQUEST_FILENAME} !-f
-		RewriteRule img/scale/. /scale.php [L]
+		RewriteRule img/fleximg_scale/. /lib/scale.php [L]
 
 		</IfModule>
 
-4. Open demos/scale.php to see if it works. You should see a resizable image with cows.
-5. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
+5. Open demos/scale.php to see if it works. You should see a resizable image with cows.
+6. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
 
 		<script src="/components/jquery/jquery.js"></script>
 
@@ -38,7 +39,7 @@ http://fleximg.nettwurk.org/demos/scale.php
 
 		<script src="/scale.js"></script>
 
-6. Init fleximg
+7. Init fleximg
 
 		<script>
 			scale.init({ 		//all default values
@@ -75,7 +76,7 @@ Image sizes get readjusted on page load
 
 ##Usage
 1. Set the src of img tags to the data-src attribute and make sure to create style definition which affect the image dimension.
-2. After the page loads scale.js will be executed and check all img tags for data-src attributes. If found it will set the src of the img to ```/img/scale/{IMG_WIDTH}/{IMG_HEIGHT}/{IMG_FILEPATH}```.
+2. After the page loads scale.js will be executed and check all img tags for data-src attributes. If found it will set the src of the img to ```/img/fleximg_scale/{IMG_WIDTH}/{IMG_HEIGHT}/{IMG_FILEPATH}```.
 3. If that file exists it will be delivered by the apache. If there is no file the request will be passed to scale.php which will scale the image to the requested dimensions, save it to the desired path and redirect to it again.
 
 ##MIT license
