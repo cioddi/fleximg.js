@@ -9,23 +9,37 @@
 
 class Fleximg{
 	var $filename,$originalpath,$targetpath;
+	var $originalwidth,$originalheight;
+	var $ratio;
+	var $quality = 90;
+
+	var $use_gdlib = false;
 
 	function __construct(){
+		$this->checkImagickInstallation();
 		$this->getFilename();
 		$this->getAnalizeRequest();
 		$this->getTargetpath();
+	}
+
+	function checkImagickInstallation(){
+		if (!extension_loaded('imagick')){
+			if (extension_loaded('gd')){
+				$this->use_gdlib = true;
+			}else{
+				header('Location: '.$this->original_file);
+			}
+		}
 	}
 
 	function generate(){
 		if(!is_file($this->targetpath) && is_file($this->original_file_absolute)){
 
 
-			$image = new Imagick($this->original_file_absolute);
-			if($image->getImageWidth() > $this->width){
+			
+			if($this->getOriginalwidth($this->original_file_absolute) > $this->width){
 
-				$image->thumbnailImage(intval($this->width),intval($this->height));
-
-				$image->writeImage($this->targetpath);
+				$this->writeImageFile();
 
 				header('Location: '.$_SERVER['REQUEST_URI']);
 			}else{
@@ -34,6 +48,68 @@ class Fleximg{
 			}
 
 		}
+	}
+
+	function writeImageFile(){
+		if($this->use_gdlib){
+			$this->new_imageobj = imagecreatetruecolor(intval($this->width), intval($this->height));
+
+			imagecopyresampled($this->new_imageobj, $this->imageobj, 0, 0, 0, 0, intval($this->width), intval($this->height), $this->originalwidth, $this->originalheight);
+
+			switch ($this->imageType) {
+        case IMAGETYPE_GIF:
+            imagegif($this->new_imageobj,$this->targetpath);
+            break;
+        case IMAGETYPE_JPEG:
+            imagejpeg($this->new_imageobj,$this->targetpath);
+            break;
+        case IMAGETYPE_PNG:
+            imagepng($this->new_imageobj,$this->targetpath);
+            break;
+    	}
+		}else{
+			$this->imageobj->thumbnailImage(intval($this->width),intval($this->height));
+
+			$this->imageobj->writeImage($this->targetpath);
+		}
+	}
+
+	function analizeImage($localpath){
+		// get original image width
+		if($this->use_gdlib){
+			list($this->originalwidth,$this->originalheight,$this->imageType) = getimagesize($localpath);
+
+			switch ($this->imageType) {
+        case IMAGETYPE_GIF:
+            $this->imageobj = imagecreatefromgif($localpath);
+            break;
+        case IMAGETYPE_JPEG:
+            $this->imageobj = imagecreatefromjpeg($localpath);
+            break;
+        case IMAGETYPE_PNG:
+            $this->imageobj = imagecreatefrompng($localpath);
+            break;
+    	}
+		}else{ //imagick
+			$this->imageobj = new Imagick($localpath);
+
+			$this->originalwidth = $this->imageobj->getImageWidth();
+			$this->originalheight = $this->imageobj->getImageHeight();
+		}
+		
+		// calculate missing value for gdlib
+		if($this->height == 0){
+			$this->ratio = $this->width/$this->originalwidth;
+			$this->height = intval(round($this->ratio*$this->originalheight));
+		}elseif($this->width == 0){
+			$this->ratio = $this->height/$this->originalheight;
+			$this->width = intval(round($this->ratio*$this->originalwidth));
+		}
+	}
+	function getOriginalwidth($localpath){
+		$this->analizeImage($localpath);
+
+		return $this->originalwidth;
 	}
 
 

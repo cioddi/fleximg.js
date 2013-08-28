@@ -1,6 +1,6 @@
 #fleximg.js
 
-Responsive image solution - Automatically scales image files to fit the desired display dimensions
+Responsive image loader - Automatically scales image files to fit the desired display dimensions
 
 [![Build Status](https://travis-ci.org/cioddi/fleximg.js.png)](https://travis-ci.org/cioddi/fleximg.js)
 
@@ -12,7 +12,7 @@ http://fleximg.nettwurk.org/demos/scale.php
 ##Requirements
 * mod_rewrite
 * PHP
-* Imagemagick
+* Imagemagick or GD lib
 * jquery (install using "$ bower install")
 * hammer.js (to detect pinch zoom events "$ bower install")
 
