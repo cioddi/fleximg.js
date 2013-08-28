@@ -2,3 +2,4 @@ bower_components/*
 .DS_Store
 vendor/*
 composer.lock
+img/fleximg_scale/*
