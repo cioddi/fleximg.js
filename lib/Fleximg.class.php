@@ -15,7 +15,7 @@ class Fleximg{
 	var $ratio;
 	var $quality = 90;
 
-	var $use_gdlib = true;
+	var $use_gdlib = false;
 
 	function __construct(){
 		$this->checkImagickInstallation();
