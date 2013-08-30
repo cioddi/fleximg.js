@@ -72,7 +72,7 @@ catch the request for that image file
 
 
 ##Client Options
-####(Javascript as parameter when calling scale.init(Array options))
+###(Javascript as parameter when calling scale.init(Array options))
 
 ####steps (int)
 If the exact display size of is always roundet up so it can be evenly divided by the steps value to make the caching more efficient and prevent creating thousands of versions of one file.
