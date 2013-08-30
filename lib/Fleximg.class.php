@@ -7,13 +7,15 @@
 * 
 */
 
+include 'Ngdlib.class.php';
+
 class Fleximg{
 	var $filename,$originalpath,$targetpath;
 	var $originalwidth,$originalheight;
 	var $ratio;
 	var $quality = 90;
 
-	var $use_gdlib = false;
+	var $use_gdlib = true;
 
 	function __construct(){
 		$this->checkImagickInstallation();
@@ -34,8 +36,6 @@ class Fleximg{
 
 	function generate(){
 		if(!is_file($this->targetpath) && is_file($this->original_file_absolute)){
-
-
 			
 			if($this->getOriginalwidth($this->original_file_absolute) > $this->width){
 
@@ -51,51 +51,23 @@ class Fleximg{
 	}
 
 	function writeImageFile(){
-		if($this->use_gdlib){
-			$this->new_imageobj = imagecreatetruecolor(intval($this->width), intval($this->height));
 
-			imagecopyresampled($this->new_imageobj, $this->imageobj, 0, 0, 0, 0, intval($this->width), intval($this->height), $this->originalwidth, $this->originalheight);
+		$this->imageobj->thumbnailImage(intval($this->width),intval($this->height));
 
-			switch ($this->imageType) {
-        case IMAGETYPE_GIF:
-            imagegif($this->new_imageobj,$this->targetpath);
-            break;
-        case IMAGETYPE_JPEG:
-            imagejpeg($this->new_imageobj,$this->targetpath);
-            break;
-        case IMAGETYPE_PNG:
-            imagepng($this->new_imageobj,$this->targetpath);
-            break;
-    	}
-		}else{
-			$this->imageobj->thumbnailImage(intval($this->width),intval($this->height));
+		$this->imageobj->writeImage($this->targetpath);
 
-			$this->imageobj->writeImage($this->targetpath);
-		}
 	}
 
 	function analizeImage($localpath){
 		// get original image width
 		if($this->use_gdlib){
-			list($this->originalwidth,$this->originalheight,$this->imageType) = getimagesize($localpath);
-
-			switch ($this->imageType) {
-        case IMAGETYPE_GIF:
-            $this->imageobj = imagecreatefromgif($localpath);
-            break;
-        case IMAGETYPE_JPEG:
-            $this->imageobj = imagecreatefromjpeg($localpath);
-            break;
-        case IMAGETYPE_PNG:
-            $this->imageobj = imagecreatefrompng($localpath);
-            break;
-    	}
+			$this->imageobj = new Ngdlib($localpath);
 		}else{ //imagick
 			$this->imageobj = new Imagick($localpath);
-
-			$this->originalwidth = $this->imageobj->getImageWidth();
-			$this->originalheight = $this->imageobj->getImageHeight();
 		}
+
+		$this->originalwidth = $this->imageobj->getImageWidth();
+		$this->originalheight = $this->imageobj->getImageHeight();
 		
 		// calculate missing value for gdlib
 		if($this->height == 0){
