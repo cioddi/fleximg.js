@@ -71,32 +71,34 @@ catch the request for that image file
 		</script>
 
 
-##Client Options (Javascript as parameter when calling scale.init(Array options))
+##Client Options
+####(Javascript as parameter when calling scale.init(Array options))
 
-###steps (int)
+####steps (int)
 If the exact display size of is always roundet up so it can be evenly divided by the steps value to make the caching more efficient and prevent creating thousands of versions of one file.
 
-###fireOnResize (bool)
+####fireOnResize (bool)
 Image sizes get readjusted on window resize event
 
-###fireOnLoad (bool)
+####fireOnLoad (bool)
 Image sizes get readjusted on page load
 
-###fireOnPinchIn (bool)
+####fireOnPinchIn (bool)
 ... on Hammer.js pinchIn event
 
-###fireOnPinchOut (bool)
+####fireOnPinchOut (bool)
 ... on Hammer.js pinchOut event
 
-###fireOnPinch (bool)
+####fireOnPinch (bool)
 ... on Hammer.js pinch event
 
-##Server Options (PHP as parameter when calling new Fleximg(Array options) in scale.php)
+##Server Options
+###(PHP as parameter when calling new Fleximg(Array options) in scale.php)
 
-###steps (int)
+####steps (int)
 Should be set to the same value as it is on the client side as a "security" feature to prevent the creation of thousand different sized version per image.
 
-###use_gdlib (bool)
+####use_gdlib (bool)
 Make fleximg use gdlib instead of imagemagick
 
 ##Usage
