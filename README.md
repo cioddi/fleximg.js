@@ -1,6 +1,6 @@
 #fleximg.js
 
-Responsive image loader - Automatically scales image files to fit the desired display dimensions
+Responsive image loader - Automatically resizes image files to fit the desired display dimensions
 
 [![Build Status](https://travis-ci.org/cioddi/fleximg.js.png)](https://travis-ci.org/cioddi/fleximg.js)
 
@@ -9,35 +9,48 @@ Responsive image loader - Automatically scales image files to fit the desired di
 ##Demo
 http://fleximg.nettwurk.org/demos/scale.php
 
+##What
+
+###Client
+
+collect all img tags that have "data-src" attribute set
+each
+	measure desired display dimensions
+	set the source of that img tag to a path that contains the resized image if it is already created (called once)
+
+###Server
+
+catch the request for that image file
+	if not image_file_exists
+		create a resized version of the original image
+	
+	deliver it
+
 ##Requirements
+* apache 
 * mod_rewrite
 * PHP
 * Imagemagick or GD lib
-* jquery (install using "$ bower install")
+* jquery (only if you dont have it already, install using "$ bower install")
 * hammer.js (to detect pinch zoom events "$ bower install")
 
 ##Installation
-1. Make sure your apache webserver with PHP, mod_rewrite and imagemagick is up an running
+1. Make sure your server meets the requirements
 2. Place the contents of this git project somewhere under the document root (e.g. {document_root}/lib/fleximg/) and install requirements using ```$ bower install```
 3. create the folder /img/fleximg_scale on your server and make sure its writable for the apache user
-4. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in (make sure in this line ``` RewriteRule img/fleximg_scale/. /lib/scale.php [L] ``` that /lib/scale.php points to scale.php on your server)
-
-		<IfModule mod_rewrite.c>
-		RewriteEngine On
+4. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in after "RewriteEngine On" (make sure in this line ``` RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L] ``` that /lib/scale.php points to scale.php on your server)
 
 		RewriteCond %{REQUEST_FILENAME} !-f
 		RewriteRule img/fleximg_scale/. /lib/scale.php [L]
 
-		</IfModule>
-
 5. Open demos/scale.php to see if it works. You should see a resizable image with cows.
 6. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
 
-		<script src="/components/jquery/jquery.js"></script>
+		<script src="/lib/fleximg/bower_components/jquery/jquery.js"></script>
 
-		<script src="/components/hammerjs/dist/jquery.hammer.js"></script>
+		<script src="/lib/fleximg/bower_components/hammerjs/dist/jquery.hammer.js"></script>
 
-		<script src="/scale.js"></script>
+		<script src="/lib/fleximg/scale.js"></script>
 
 7. Init fleximg
 
