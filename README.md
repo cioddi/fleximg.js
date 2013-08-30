@@ -46,7 +46,7 @@ catch the request for that image file
 4. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in after "RewriteEngine On" (make sure in this line ``` RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L] ``` that /lib/scale.php points to scale.php on your server)
 
 		RewriteCond %{REQUEST_FILENAME} !-f
-		RewriteRule img/fleximg_scale/. /lib/scale.php [L]
+		RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L]
 
 5. Open demos/scale.php to see if it works. You should see a resizable image with cows.
 6. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
