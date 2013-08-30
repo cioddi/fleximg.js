@@ -17,7 +17,8 @@ http://fleximg.nettwurk.org/demos/scale.php
 collect all img tags that have "data-src" attribute set
 each
 	measure desired display dimensions
-	set the source of that img tag to a path that contains the resized image if it is already created (called once)
+	set the source of that img tag to a path that leads to the resized image 
+	if it is already created (called once)
 
 ```
 
