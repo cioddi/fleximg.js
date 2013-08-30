@@ -71,7 +71,7 @@ catch the request for that image file
 		</script>
 
 
-##Options
+##Client Options (Javascript as parameter when calling scale.init(Array options))
 
 ###steps (int)
 If the exact display size of is always roundet up so it can be evenly divided by the steps value to make the caching more efficient and prevent creating thousands of versions of one file.
@@ -91,11 +91,22 @@ Image sizes get readjusted on page load
 ###fireOnPinch (bool)
 ... on Hammer.js pinch event
 
+##Server Options (PHP as parameter when calling new Fleximg(Array options) in scale.php)
+
+###steps (int)
+Should be set to the same value as it is on the client side as a "security" feature to prevent the creation of thousand different sized version per image.
+
+###use_gdlib (bool)
+Make fleximg use gdlib instead of imagemagick
 
 ##Usage
 1. Set the src of img tags to the data-src attribute and make sure to create style definition which affect the image dimension.
 2. After the page loads scale.js will be executed and check all img tags for data-src attributes. If found it will set the src of the img to ```/img/fleximg_scale/{IMG_WIDTH}/{IMG_HEIGHT}/{IMG_FILEPATH}```.
 3. If that file exists it will be delivered by the apache. If there is no file the request will be passed to scale.php which will scale the image to the requested dimensions, save it to the desired path and redirect to it again.
+
+##Changelog
+* 23.8.2013 - Server Side Options 'steps' and 'use_gdlib'
+* 28.8.2013 - Gd lib support/fallback
 
 ##MIT license
 Copyright (c) 2013 Max Tobias Weber
