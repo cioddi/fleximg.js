@@ -72,7 +72,7 @@ catch the request for that image file
 
 
 ##Client Options
-###(Javascript as parameter when calling scale.init(Array options))
+###Javascript as parameter when calling scale.init(Array options)
 
 ####steps (int)
 If the exact display size of is always roundet up so it can be evenly divided by the steps value to make the caching more efficient and prevent creating thousands of versions of one file.
@@ -93,7 +93,7 @@ Image sizes get readjusted on page load
 ... on Hammer.js pinch event
 
 ##Server Options
-###(PHP as parameter when calling new Fleximg(Array options) in scale.php)
+###PHP as parameter when calling new Fleximg(Array options) in scale.php
 
 ####steps (int)
 Should be set to the same value as it is on the client side as a "security" feature to prevent the creation of thousand different sized version per image.
