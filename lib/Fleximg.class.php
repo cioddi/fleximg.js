@@ -10,18 +10,32 @@
 include 'Ngdlib.class.php';
 
 class Fleximg{
-	var $filename,$originalpath,$targetpath;
+	var $filename,$originalpath,$targetpath,$targetpath_web;
 	var $originalwidth,$originalheight;
 	var $ratio;
-	var $quality = 90;
 
-	var $use_gdlib = false;
+	function __construct($options = false){
+		$this->applyOptions($this->getDefaultOptions());
+		if(is_array($options))$this->applyOptions($options);
 
-	function __construct(){
 		$this->checkImagickInstallation();
 		$this->getFilename();
 		$this->getAnalizeRequest();
 		$this->getTargetpath();
+	}
+
+	function getDefaultOptions(){
+		return array(
+			'steps' => 50,
+			'jpeg_quality' => 90,
+			'use_gdlib' => false
+		);
+	}
+
+	function applyOptions($options){
+		foreach($options as $key => $option){
+			$this->{$key} = $option;
+		}
 	}
 
 	function checkImagickInstallation(){
@@ -41,7 +55,7 @@ class Fleximg{
 
 				$this->writeImageFile();
 
-				header('Location: '.$_SERVER['REQUEST_URI']);
+				header('Location: '.$this->targetpath_web);
 			}else{
 
 				header('Location: '.$this->original_file);
@@ -69,7 +83,99 @@ class Fleximg{
 		$this->originalwidth = $this->imageobj->getImageWidth();
 		$this->originalheight = $this->imageobj->getImageHeight();
 		
-		// calculate missing value for gdlib
+		$this->calculateMissingDimension();
+		$this->adjustDimensionToSteps();
+		$this->adjustTargetPathToDimensions();
+		
+	}
+
+	function adjustDimensionToSteps(){
+		
+		if($this->height == 0){
+			$rest = $this->steps % $this->width;
+			if($rest){
+				$this->width = $this->width+($steps-$rest);
+				$this->height = 0;
+				$this->calculateMissingDimension();
+			}
+
+		}elseif($this->width == 0){
+			$rest = $this->steps % $this->height;
+			if($rest){
+				$this->height = $this->height+($steps-$rest);
+				$this->width = 0;
+				$this->calculateMissingDimension();
+			}
+		}
+	}
+
+	function fitValueToSteps($value){
+		$rest = $value % $this->steps;
+
+		if($rest){
+			$value = $value+($this->steps-$rest);
+		}
+		return $value;
+	}
+
+	function adjustTargetPathToDimensions(){
+
+		$file = $_SERVER['REQUEST_URI'];
+		$file = explode('/',$file);
+		$filename = $file[(count($file)-1)];
+
+		unset($file[(count($file)-1)]);
+
+		$file = array_merge($file);
+
+		for ($i=0; $i < count($file); $i++) { 
+			if($i !== 0 && $file[$i-1] == 'fleximg_scale'){
+				
+				$width = $file[$i];
+			}
+			if($i !== 0 && $file[$i-2] == 'fleximg_scale'){
+				
+				$height = $file[$i];
+			}
+		}
+
+		if($width == 0){
+			$height = $this->fitValueToSteps($height);
+		}else{
+			$width = $this->fitValueToSteps($width);
+			$height = 0;
+		}
+
+		$next = '';
+		for ($i=0; $i < count($file); $i++) { 
+
+			if($next === 'height'){
+				$file[$i] = $height;
+				$next = '';
+			}
+
+			if($next === 'width'){
+				$file[$i] = $width;
+				$next = 'height';
+			}
+
+			if($file[$i] === 'fleximg_scale'){
+				$next = 'width';
+			}
+		}
+		
+		$path = implode('/',$file);
+
+		if(!is_dir($path)){
+			mkdir($_SERVER['DOCUMENT_ROOT'].'/'.$path,0766,true);
+		}
+
+		$this->targetpath_web = $path.'/'.$filename;
+		$this->targetpath = $_SERVER['DOCUMENT_ROOT'].'/'.$path.'/'.$filename;
+
+	}
+
+	function calculateMissingDimension(){
 		if($this->height == 0){
 			$this->ratio = $this->width/$this->originalwidth;
 			$this->height = intval(round($this->ratio*$this->originalheight));
@@ -78,6 +184,7 @@ class Fleximg{
 			$this->width = intval(round($this->ratio*$this->originalwidth));
 		}
 	}
+
 	function getOriginalwidth($localpath){
 		$this->analizeImage($localpath);
 
@@ -118,15 +225,17 @@ class Fleximg{
 
 			unset($file[(count($file)-1)]);
 
-			$path = $_SERVER['DOCUMENT_ROOT'].'/'.implode('/',$file);
+			$path = implode('/',$file);
 
-			error_log($path);
+			$this->targetpath_web = $path.'/'.$filename;
+			$this->targetpath = $_SERVER['DOCUMENT_ROOT'].'/'.$path.'/'.$filename;
+
+			
 			if(!is_dir($path)){
-				mkdir($path,0766,true);
+				mkdir($_SERVER['DOCUMENT_ROOT'].'/'.$path,0766,true);
 			}
-
-			$this->targetpath = $path.'/'.$filename;	
 		}
+
 		return $this->targetpath;
 	}
 
