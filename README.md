@@ -13,18 +13,22 @@ http://fleximg.nettwurk.org/demos/scale.php
 
 ###Client
 
+```
 collect all img tags that have "data-src" attribute set
 each
 	measure desired display dimensions
 	set the source of that img tag to a path that contains the resized image if it is already created (called once)
 
-###Server
+```
 
+###Server
+```
 catch the request for that image file
 	if not image_file_exists
 		create a resized version of the original image
 	
 	deliver it
+```
 
 ##Requirements
 * apache 
