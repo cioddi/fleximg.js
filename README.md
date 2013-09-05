@@ -17,8 +17,7 @@ http://fleximg.nettwurk.org/demos/scale.php
 collect all img tags that have "data-src" attribute set
 each
 	measure desired display dimensions
-	set the source of that img tag to a path that leads to the resized image 
-	if it is already created (called once)
+	set the source of that img tag to a path that leads to the resized image
 
 ```
 
@@ -43,7 +42,7 @@ catch the request for that image file
 1. Make sure your server meets the requirements
 2. Place the contents of this git project somewhere under the document root (e.g. {document_root}/lib/fleximg/) and install requirements using ```$ bower install```
 3. create the folder /img/fleximg_scale on your server and make sure its writable for the apache user
-4. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in after "RewriteEngine On" (make sure in this line ``` RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L] ``` that /lib/scale.php points to scale.php on your server)
+4. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in after "RewriteEngine On" (make sure in this line ``` RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L] ``` that /lib/fleximg/scale.php points to scale.php on your server)
 
 		RewriteCond %{REQUEST_FILENAME} !-f
 		RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L]

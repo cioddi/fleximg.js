@@ -13,8 +13,11 @@ class Fleximg{
 	var $filename,$originalpath,$targetpath,$targetpath_web;
 	var $originalwidth,$originalheight;
 	var $ratio;
+	var $docRoot;
 
 	function __construct($options = false){
+		$this->detectDocRoot();
+
 		$this->applyOptions($this->getDefaultOptions());
 		if(is_array($options))$this->applyOptions($options);
 
@@ -22,6 +25,11 @@ class Fleximg{
 		$this->getFilename();
 		$this->getAnalizeRequest();
 		$this->getTargetpath();
+	}
+
+	function detectDocRoot(){
+		$this->docRoot = $_SERVER['DOCUMENT_ROOT'];
+		if( substr($this->docRoot, -1) !== '/')$this->docRoot .= '/';
 	}
 
 	function getDefaultOptions(){
@@ -167,11 +175,11 @@ class Fleximg{
 		$path = implode('/',$file);
 
 		if(!is_dir($path)){
-			mkdir($_SERVER['DOCUMENT_ROOT'].'/'.$path,0766,true);
+			mkdir($this->docRoot.$path,0766,true);
 		}
 
 		$this->targetpath_web = $path.'/'.$filename;
-		$this->targetpath = $_SERVER['DOCUMENT_ROOT'].'/'.$path.'/'.$filename;
+		$this->targetpath = $this->docRoot.$path.'/'.$filename;
 
 	}
 
@@ -213,7 +221,7 @@ class Fleximg{
 		$this->height = $original_file[1];
 		unset($original_file[1]);
 		unset($original_file[0]);
-		$this->original_file_absolute = $_SERVER['DOCUMENT_ROOT'].'/'.implode('/',$original_file);
+		$this->original_file_absolute = $this->docRoot.implode('/',$original_file);
 		$this->original_file = '/'.implode('/',$original_file);
 	}
 
@@ -228,11 +236,11 @@ class Fleximg{
 			$path = implode('/',$file);
 
 			$this->targetpath_web = $path.'/'.$filename;
-			$this->targetpath = $_SERVER['DOCUMENT_ROOT'].'/'.$path.'/'.$filename;
+			$this->targetpath = $this->docRoot.$path.'/'.$filename;
 
 			
 			if(!is_dir($path)){
-				mkdir($_SERVER['DOCUMENT_ROOT'].'/'.$path,0766,true);
+				mkdir($this->docRoot.$path,0766,true);
 			}
 		}
 
