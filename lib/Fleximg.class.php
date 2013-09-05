@@ -57,6 +57,7 @@ class Fleximg{
 	}
 
 	function generate(){
+
 		if(!is_file($this->targetpath) && is_file($this->original_file_absolute)){
 			
 			if($this->getOriginalwidth($this->original_file_absolute) > $this->width){
@@ -131,6 +132,10 @@ class Fleximg{
 		$file = $_SERVER['REQUEST_URI'];
 		$file = explode('/',$file);
 		$filename = $file[(count($file)-1)];
+		
+		if(strpos($filename, '%20')){
+			$filename = urldecode($filename);
+		}
 
 		unset($file[(count($file)-1)]);
 
@@ -141,7 +146,7 @@ class Fleximg{
 				
 				$width = $file[$i];
 			}
-			if($i !== 0 && $file[$i-2] == 'fleximg_scale'){
+			if($i !== 0 && $i !== 1 && $file[$i-2] == 'fleximg_scale'){
 				
 				$height = $file[$i];
 			}
@@ -174,7 +179,7 @@ class Fleximg{
 		
 		$path = implode('/',$file);
 
-		if(!is_dir($path)){
+		if(!is_dir($this->docRoot.$path)){
 			mkdir($this->docRoot.$path,0766,true);
 		}
 
@@ -217,12 +222,21 @@ class Fleximg{
 
 		$original_file = explode('/',$original_file);
 
+
+		
+
+
 		$this->width = $original_file[0];
 		$this->height = $original_file[1];
 		unset($original_file[1]);
 		unset($original_file[0]);
-		$this->original_file_absolute = $this->docRoot.implode('/',$original_file);
-		$this->original_file = '/'.implode('/',$original_file);
+
+		$original_file = implode('/',$original_file);
+		if(strpos($original_file, '%20')){
+			$original_file = urldecode($original_file);
+		}
+		$this->original_file_absolute = $this->docRoot.$original_file;
+		$this->original_file = '/'.$original_file;
 	}
 
 	function getTargetpath(){
@@ -230,6 +244,10 @@ class Fleximg{
 			$file = $_SERVER['REQUEST_URI'];
 			$file = explode('/',$file);
 			$filename = $file[(count($file)-1)];
+
+			if(strpos($filename, '%20')){
+				$filename = urldecode($filename);
+			}
 
 			unset($file[(count($file)-1)]);
 
@@ -239,7 +257,7 @@ class Fleximg{
 			$this->targetpath = $this->docRoot.$path.'/'.$filename;
 
 			
-			if(!is_dir($path)){
+			if(!is_dir($this->docRoot.$path)){
 				mkdir($this->docRoot.$path,0766,true);
 			}
 		}

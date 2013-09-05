@@ -3,7 +3,7 @@
 include 'lib/Fleximg.class.php';
 
 $fleximgObj = new Fleximg(array(
-	'steps' => 100
+	'steps' => 50
 ));
 $fleximgObj->generate();
 
