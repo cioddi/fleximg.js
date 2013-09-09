@@ -36,7 +36,7 @@ catch the request for that image file
 * PHP
 * Imagemagick or GD lib
 * jquery (only if you dont have it already, install using "$ bower install")
-* hammer.js (to detect pinch zoom events "$ bower install")
+* jquery.hammer.js (to detect pinch zoom events "$ bower install" or download from https://github.com/EightMedia/hammer.js)
 
 ##Installation
 1. Make sure your server meets the requirements
