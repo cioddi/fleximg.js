@@ -47,17 +47,17 @@ class Ngdlib{
 
 	}
 
-	public function writeImage(){
+	public function writeImage($targetpath){
 
 		switch ($this->imageType) {
 			case IMAGETYPE_GIF:
-				imagegif($this->imageobj,$this->targetpath);
+				imagegif($this->imageobj,$targetpath);
 				break;
 			case IMAGETYPE_JPEG:
-				imagejpeg($this->imageobj,$this->targetpath);
+				imagejpeg($this->imageobj,$targetpath);
 				break;
 			case IMAGETYPE_PNG:
-				imagepng($this->imageobj,$this->targetpath);
+				imagepng($this->imageobj,$targetpath);
 				break;
 		}
 
