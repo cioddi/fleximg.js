@@ -57,6 +57,8 @@ class Fleximg{
 	}
 
 	function generate(){
+		error_log('Webpath: '.$this->targetpath_web);
+		error_log('original path: '.$this->original_file_absolute);
 
 		if(!is_file($this->targetpath) && is_file($this->original_file_absolute)){
 			
@@ -84,6 +86,7 @@ class Fleximg{
 	function analizeImage($localpath){
 		// get original image width
 		if($this->use_gdlib){
+			error_log('using GDlib');
 			$this->imageobj = new Ngdlib($localpath);
 		}else{ //imagick
 			$this->imageobj = new Imagick($localpath);

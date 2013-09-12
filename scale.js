@@ -60,7 +60,8 @@ scale = {
 
 				if(typeof $(item).attr('current-size') === 'undefined'){
 					resize = true;
-				}else if(parseInt($(item).attr('current-size')) < width){
+				}else if(parseInt($(item).attr('current-size')) < width
+					&& width > 0){
 					resize = true;
 				}
 
@@ -68,6 +69,8 @@ scale = {
 
 					$(item).attr('current-size',width);
 					$(item).attr('src',scale.img_folder+'/fleximg_scale/'+width+'/0'+$(item).attr('data-src'));
+				}else if(typeof $(item).attr('src') === 'undefined'){
+					$(item).attr('src',$(item).attr('data-src'));
 				}
 			}
 		});
