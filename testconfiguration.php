@@ -15,13 +15,13 @@ $tests = array(
 		),
 	'image_folder'							=> array(
 		'value' 					=> false,
-		'title'						=> 'Image folder exists',
+		'title'						=> 'Image folder exists?',
 		'success_message'	=> 'The target image folder \'_document_root/img/fleximg_scale\' was found.',
 		'failure_message'	=> 'The target image folder \'_document_root/img/fleximg_scale\' was not found. Please create the folders /img/fleximg_scale in your servers document root and make sure it is writable',
 		),
 	'image_folder_writable'			=> array(
 		'value' 					=> false,
-		'title'						=> 'Image folder writable',
+		'title'						=> 'Image folder writable?',
 		'depends_on' 			=> 'image_folder',
 		'success_message'	=> 'The target image folder \'_document_root/img/fleximg_scale\' is writable.',
 		'failure_message'	=> 'The target image folder \'_document_root/img/fleximg_scale\' is not writable. Please make sure to give your apache user read and write access to /img/fleximg_scale in your servers document root'
@@ -34,7 +34,7 @@ $tests = array(
 		),
 	'htaccess_file_exists'			=> array(
 		'value' 					=> false,
-		'title'						=> '.htaccess file exists',
+		'title'						=> '.htaccess file exists?',
 		'success_message'	=> 'Your .htaccess file was found in the right place.',
 		'failure_message'	=> 'No .htaccess file found. Please create a file named .htaccess in your servers document root.'
 		),
@@ -47,7 +47,7 @@ $tests = array(
 		),
 	'htaccess_scale_php_found'	=> array(
 		'value' 					=> false,
-		'title'						=> 'fleximg.js .htaccess config: scale.php found',
+		'title'						=> 'fleximg.js .htaccess config: scale.php',
 		'depends_on' 			=> 'htaccess_fleximgcfg_exists',
 		'success_message'	=> 'The file scale.php you are referencing to from the .htaccess file was found in the right place.',
 		'failure_message'	=> 'The file scale.php you are referencing to from the .htaccess file was not found. Please make sure scale.php exists at _var_ on your server'
@@ -130,12 +130,18 @@ if($htaccess_contents){
 </head>
 <body>
 	<style>
+		body {
+			font-size: 14px;
+			line-height: 1.2em;
+		}
+		h2 {
+			font-size: 16px;
+		}
 		.container{
 			width:800px;
 			margin:0 auto;
 			font-family: sans-serif;
 			color:#fff;
-
 		}
 
 		.container > div{
@@ -148,14 +154,10 @@ if($htaccess_contents){
 			margin-top: 0px;
 		}
 		.container .success{
-			border: 2px solid green;
-			background-color: rgba(100,200,100,0.7);
-			text-shadow: 2px 2px 0px green;
+			background-color: #2ecc71;
 		}
 		.container .failure{
-			border: 2px solid red;
-			background-color: rgba(200,100,100,0.7);
-			text-shadow: 2px 2px 0px red;
+			background-color: #e74c3c;
 		}
 
 	</style>
