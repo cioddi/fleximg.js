@@ -20,6 +20,10 @@ scale = {
 	applyOptions:function(options){
 		options = scale.getOptionsObject(scale.getOptionsObject);
 
+
+		with(bla){
+
+		}
 		for(var key in options){
 			if(options.hasOwnProperty(key)){
 				switch(key){
@@ -65,12 +69,16 @@ scale = {
 					resize = true;
 				}
 
+				var data_src = $(item).attr('data-src');
+				if(data_src.indexOf('http://') === 0 || data_src.indexOf('https://') === 0)data_src = data_src.split('/').splice(3).join('/')
+				if(data_src[0] !== '/')data_src = '/'+data_src;
+
 				if(resize){
 
 					$(item).attr('current-size',width);
-					$(item).attr('src',scale.img_folder+'/fleximg_scale/'+width+'/0'+$(item).attr('data-src'));
+					$(item).attr('src',scale.img_folder+'/fleximg_scale/'+width+'/0'+data_src);
 				}else if(typeof $(item).attr('src') === 'undefined'){
-					$(item).attr('src',$(item).attr('data-src'));
+					$(item).attr('src',data_src);
 				}
 			}
 		});
