@@ -20,10 +20,6 @@ scale = {
 	applyOptions:function(options){
 		options = scale.getOptionsObject(scale.getOptionsObject);
 
-
-		with(bla){
-
-		}
 		for(var key in options){
 			if(options.hasOwnProperty(key)){
 				switch(key){
