@@ -2,7 +2,7 @@
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L]
+RewriteRule img/fleximg_scale/. /scale.php [L]
 
 
 </IfModule>
