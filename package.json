@@ -1,0 +1,22 @@
+{
+  "name": "fleximg.js",
+  "description": "",
+  "version": "0.1.0",
+  "homepage": "https://github.com/cioddi/fleximg.js",
+  "author": {
+    "name": "Max Tobias Weber",
+    "email": "maxtobiasweber@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cioddi/fleximg.js.git"
+  },
+  "devDependencies": {
+    "grunt-contrib-compress": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt": "~0.4.1"
+  },
+  "keywords": []
+}

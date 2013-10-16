@@ -77,7 +77,6 @@ class Fleximg{
 	function writeImageFile(){
 
 		if($this->isJpeg()){
-			error_log($this->jpeg_compression);
 			$this->imageobj->setImageCompression(Imagick::COMPRESSION_JPEG); 
 			$this->imageobj->setImageCompressionQuality($this->jpeg_compression); 
 		}

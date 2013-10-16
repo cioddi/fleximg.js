@@ -12,8 +12,11 @@
 			display: block;
 			margin-top: 30px;
 		}
+		.text_center{
+			text-align: center;
+		}
 		.img_1{
-			width: 10%;
+			width: 20%;
 		}
 		#slider,#slider_display{
 			width: 20%;
@@ -26,7 +29,8 @@
 </head>
 <body>
 	<div id="slider" class="block_center"></div>
-	<div id="slider_display" class="block_center"><span class="value">10</span> %</div>
+	<div id="slider_display" class="block_center"><span class="value">20</span> %</div>
+	<div class="text_center"><p>Image requests: <span class="request_counter">0</span></p></div>
 	<img id="img_1" data-src="/img/test.jpg" class="img_1 block_center" >
 
 	<script src="/bower_components/jquery/jquery.js"></script>
@@ -40,15 +44,30 @@
 	    $( "#slider" ).slider({
 	    	max:100,
 	    	min:1,
-	    	value:10,
+	    	value:20,
 	    	slide:function(event,ui){
 	    		$('#slider_display > .value').html(ui.value);
 	    		$('.img_1').css('width',ui.value+'%');
 
 	    		scale.latestResizeRefresh();
+
+	    		refreshCounter();
 	    	}
 	    });
 	  });
+
+	  refreshCounter = function(){
+	  	setTimeout(function(){
+	  		if(lastSrc !== $('.img_1').attr('src'))request_counter = request_counter + 1;
+	  		$('.request_counter').html(request_counter);
+	  		lastSrc = $('.img_1').attr('src');
+  		},2000);
+	  }
+
+	  lastSrc = '';
+	  request_counter = 0;
+
+	  refreshCounter();
 
 	  setWidth = function(value){
 	  	$('.img_1').css('width',value+'px');

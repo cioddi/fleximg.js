@@ -1,8 +1,8 @@
 scale = {
-	init:function(options){
+	init:function(options) {
 
-		if(typeof options !== 'undefined')var options = {};
-		
+		if (typeof options === 'undefined')options = {};
+
 		scale.applyOptions(options);
 	},
 	defaultOptions:{
@@ -12,7 +12,8 @@ scale = {
 		fireOnLoad:true,
 		fireOnResize:true,
 		steps:50,
-		img_folder:'/img'
+		img_folder:'/img',
+		hidpi_multiplier:1
 	},
 	getOptionsObject:function(options){
 		return $.extend(scale.defaultOptions,options);
@@ -27,7 +28,7 @@ scale = {
 						if(typeof $().hammer !== 'undefined'){
 							if(options[key]){
 								$(window).hammer().on("pinchin",scale.latestResizeRefresh);
-							}	
+							}
 						}
 						break;
 					case 'fireOnPinchOut':
@@ -76,13 +77,13 @@ scale = {
 
 				if(typeof $(item).attr('current-size') === 'undefined'){
 					resize = true;
-				}else if(parseInt($(item).attr('current-size')) < width
-					&& width > 0){
+				}else if(parseInt($(item).attr('current-size'),10) < width &&
+					width > 0){
 					resize = true;
 				}
 
 				var data_src = $(item).attr('data-src');
-				if(data_src.indexOf('http://') === 0 || data_src.indexOf('https://') === 0)data_src = data_src.split('/').splice(3).join('/')
+				if(data_src.indexOf('http://') === 0 || data_src.indexOf('https://') === 0)data_src = data_src.split('/').splice(3).join('/');
 				if(data_src[0] !== '/')data_src = '/'+data_src;
 
 				if(resize){
@@ -103,6 +104,8 @@ scale = {
 		var ratio = $(document).width() / window.innerWidth;
 
 		if(isNaN(ratio))return 1;
+
+		ratio = ratio * scale.hidpi_multiplier;
 		return ratio;
 	},
 	getDevicePixelRatio:function(){
