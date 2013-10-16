@@ -24,19 +24,35 @@ scale = {
 			if(options.hasOwnProperty(key)){
 				switch(key){
 					case 'fireOnPinchIn':
-						if(options[key])$(window).hammer().on("pinchin",scale.latestResizeRefresh);
+						if(typeof $().hammer !== 'undefined'){
+							if(options[key]){
+								$(window).hammer().on("pinchin",scale.latestResizeRefresh);
+							}	
+						}
 						break;
 					case 'fireOnPinchOut':
-						if(options[key])$(window).hammer().on("pinchout",scale.latestResizeRefresh);
+						if(typeof $().hammer !== 'undefined'){
+							if(options[key]){
+								$(window).hammer().on("pinchout",scale.latestResizeRefresh);
+							}
+						}
 						break;
 					case 'fireOnLoad':
-						if(options[key])$(window).load(scale.readjust);
+						if(options[key]){
+							$(window).load(scale.readjust);
+						}
 						break;
 					case 'fireOnPinch':
-						$(window).hammer().on("pinch",scale.latestResizeRefresh);
+						if(typeof $().hammer !== 'undefined'){
+							if(options[key]){
+								$(window).hammer().on("pinch",scale.latestResizeRefresh);
+							}
+						}
 						break;
 					case 'fireOnResize':
-						$(window).resize(scale.latestResizeRefresh);
+						if(options[key]){
+							$(window).resize(scale.latestResizeRefresh);
+						}
 						break;
 					default:
 						scale.setOption(key,options[key]);

@@ -36,7 +36,7 @@ catch the request for that image file
 * PHP
 * Imagemagick or GD lib
 * jquery (only if you dont have it already, install using "$ bower install")
-* jquery.hammer.js (to detect pinch zoom events "$ bower install" or download from https://github.com/EightMedia/hammer.js)
+* jquery.hammer.js (to detect pinch zoom events "$ bower install" or download from https://github.com/EightMedia/hammer.js) [optional]
 
 ##Installation
 1. Make sure your server meets the requirements
@@ -68,6 +68,17 @@ catch the request for that image file
 				steps:			50
 			});
 		</script>
+
+##Test configuration
+
+If you are having trouble with the setup open http://[your_host]/lib/fleximg/testconfiguration.php in your browser. It will check the following things and probably help you with getting your setup right:
+
+- Apache modules (Imagemagick/gdlib)
+- image cache folder location (/img/fleximg_scale)
+- image cache folder rights
+- .htaccess location
+- .htaccess setup
+
 
 
 ##Client Options
@@ -106,8 +117,10 @@ Make fleximg use gdlib instead of imagemagick
 3. If that file exists it will be delivered by the apache. If there is no file the request will be passed to scale.php which will scale the image to the requested dimensions, save it to the desired path and redirect to it again.
 
 ##Changelog
+
 * 23.8.2013 - Server Side Options 'steps' and 'use_gdlib'
 * 28.8.2013 - Gd lib support/fallback
+* 16.10.2013 - Make use of hammer.js optional
 
 ##MIT license
 Copyright (c) 2013 Max Tobias Weber
