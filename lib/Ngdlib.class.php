@@ -29,6 +29,20 @@ class Ngdlib{
 		}
 	}
 
+	public function getImageFormat(){
+		switch ($this->imageType) {
+			case IMAGETYPE_GIF:
+				return 'GIF';
+				break;
+			case IMAGETYPE_JPEG:
+				return 'JPEG';
+				break;
+			case IMAGETYPE_PNG:
+				return 'PNG';
+				break;
+		}
+	}
+
 	public function getImageWidth(){
 		return $this->originalwidth;
 	}
@@ -47,6 +61,13 @@ class Ngdlib{
 
 	}
 
+	public function setImageCompression($compression){
+	} 
+	
+	public function setImageCompressionQuality($jpeg_compression){
+		$this->jpeg_compression = $jpeg_compression;
+	} 
+
 	public function writeImage($targetpath){
 
 		switch ($this->imageType) {
@@ -54,7 +75,11 @@ class Ngdlib{
 				imagegif($this->imageobj,$targetpath);
 				break;
 			case IMAGETYPE_JPEG:
-				imagejpeg($this->imageobj,$targetpath);
+				if(isset($this->jpeg_compression)){
+					imagejpeg($this->imageobj,$targetpath,$this->jpeg_compression);
+				}else{
+					imagejpeg($this->imageobj,$targetpath);
+				}
 				break;
 			case IMAGETYPE_PNG:
 				imagepng($this->imageobj,$targetpath);

@@ -35,7 +35,7 @@ class Fleximg{
 	function getDefaultOptions(){
 		return array(
 			'steps' => 50,
-			'jpeg_quality' => 90,
+			'jpeg_compression' => 90,
 			'use_gdlib' => false
 		);
 	}
@@ -76,6 +76,12 @@ class Fleximg{
 
 	function writeImageFile(){
 
+		if($this->isJpeg()){
+			error_log($this->jpeg_compression);
+			$this->imageobj->setImageCompression(Imagick::COMPRESSION_JPEG); 
+			$this->imageobj->setImageCompressionQuality($this->jpeg_compression); 
+		}
+
 		$this->imageobj->thumbnailImage(intval($this->width),intval($this->height));
 
 		$this->imageobj->writeImage($this->targetpath);
@@ -98,6 +104,11 @@ class Fleximg{
 		$this->adjustDimensionToSteps();
 		$this->adjustTargetPathToDimensions();
 		
+	}
+
+	function isJpeg(){
+		if($this->imageobj->getImageFormat() === 'JPEG')return true;
+		return false;
 	}
 
 	function adjustDimensionToSteps(){
