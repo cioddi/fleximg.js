@@ -42,10 +42,12 @@ catch the request for that image file
 1. Make sure your server meets the requirements
 2. Place the contents of this git project somewhere under the document root (e.g. {document_root}/lib/fleximg/) and install requirements using ```$ bower install```
 3. create the folder /img/fleximg_scale on your server and make sure its writable for the apache user
-4. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in after "RewriteEngine On" (make sure in this line ``` RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L] ``` that /lib/fleximg/scale.php points to scale.php on your server)
+4. If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in after "RewriteEngine On" 
 
 		RewriteCond %{REQUEST_FILENAME} !-f
 		RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L]
+
+	Important: Make sure in this line ``` RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L] ``` that /lib/fleximg/scale.php points to scale.php on your server.
 
 5. Open demos/scale.php to see if it works. You should see a resizable image with cows.
 6. To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts
