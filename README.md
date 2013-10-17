@@ -6,8 +6,8 @@ Responsive image loader - Automatically resizes image files to fit the desired d
 
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/fleximg.svg)](https://saucelabs.com/u/fleximg)
 
-##Demo
-http://fleximg.nettwurk.org/demos/scale.php
+##Website
+http://www.fleximg.com
 
 ##What
 
