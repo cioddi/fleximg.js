@@ -22,7 +22,7 @@
 			text-align: center;
 		}
 		#img_2{
-			width: 500px;
+			width: 400px;
 		}
 	</style>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />

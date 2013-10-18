@@ -153,7 +153,7 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
     public function testFleximgInitiation()
     {
 
-        $this->assertContains('/500/',$this->byCss('#img_2')->attribute('src'));
+        $this->assertContains('/400/',$this->byCss('#img_2')->attribute('src'));
 
     }
 }
