@@ -30,6 +30,8 @@
 	<div id="set_width_500" onclick="setWidth(500)" class="block_center">set fixed width</div>
 	<img id="img_1" data-src="/img/test.jpg" class="img_1 block_center" >
 
+	<img id="img_2" data-src="/img/test.jpg" class="block_center" >
+
 	<script src="/bower_components/jquery/jquery.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="/bower_components/hammerjs/dist/jquery.hammer.js"></script>

@@ -48,4 +48,11 @@ class simpleDemoTest extends Sauce\Sausage\WebDriverTestCase
         $this->assertContains('/800/',$this->byCss('.img_1')->attribute('src'));
 
     }
+
+    public function testReSrcInitiation()
+    {
+
+        $this->assertContains('/400/',$this->byCss('.img_2')->attribute('src'));
+
+    }
 }
