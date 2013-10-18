@@ -114,6 +114,9 @@ Make fleximg use gdlib instead of imagemagick
 ####jpeg_compression (integer [1-100])
 adjust jpeg compression
 
+####hidpi_multiplier (float [0.1-1])
+adjust delivery size images for hidpi screens (hidpi_multiplier will be multiplied with the calculated multiplier [screen_real_pixel_width]/[screen_fake_pixel_width])
+
 ##Usage
 1. Set the src of img tags to the data-src attribute and make sure to create style definition which affect the image dimension.
 2. After the page loads scale.js will be executed and check all img tags for data-src attributes. If found it will set the src of the img to ```/img/fleximg_scale/{IMG_WIDTH}/{IMG_HEIGHT}/{IMG_FILEPATH}```.
