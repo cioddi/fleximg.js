@@ -31,22 +31,17 @@
         <h1>
 <a name="fleximgjs" class="anchor" href="#fleximgjs"><span class="octicon octicon-link"></span></a>fleximg.js</h1>
 
-<p>Responsive image loader - Automatically resizes image files to fit the desired display dimensions</p>
+<p>Automatically serves the right image resolution in responsive webdesign.</p>
 
 <p><a href="https://travis-ci.org/cioddi/fleximg.js"><img src="https://travis-ci.org/cioddi/fleximg.js.png" alt="Build Status"></a></p>
 
 <p><a href="https://saucelabs.com/u/fleximg"><img src="https://saucelabs.com/browser-matrix/fleximg.svg" alt="Selenium Test Status"></a></p>
 
 <h2>
-<a name="website" class="anchor" href="#website"><span class="octicon octicon-link"></span></a>Website</h2>
-
-<p><a href="http://www.fleximg.com">http://www.fleximg.com</a></p>
-
-<h2>
-<a name="what" class="anchor" href="#what"><span class="octicon octicon-link"></span></a>What</h2>
+<a name="what-does-fleximgjs-do" class="anchor" href="#what-does-fleximgjs-do"><span class="octicon octicon-link"></span></a>What does fleximg.js do?</h2>
 
 <h3>
-<a name="client" class="anchor" href="#client"><span class="octicon octicon-link"></span></a>Client</h3>
+<a name="what-happens-on-the-client-side" class="anchor" href="#what-happens-on-the-client-side"><span class="octicon octicon-link"></span></a>What happens on the client side?</h3>
 
 <pre><code>collect all img tags that have "data-src" attribute set
 each
@@ -56,7 +51,7 @@ each
 </code></pre>
 
 <h3>
-<a name="server" class="anchor" href="#server"><span class="octicon octicon-link"></span></a>Server</h3>
+<a name="what-happens-on-the-server-side" class="anchor" href="#what-happens-on-the-server-side"><span class="octicon octicon-link"></span></a>What happens on the server side?</h3>
 
 <pre><code>catch the request for that image file
     if not image_file_exists
@@ -66,46 +61,54 @@ each
 </code></pre>
 
 <h2>
-<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<ol>
+<li>Set the src of img tags to the data-src attribute and make sure to create style definition which affect the image dimension.</li>
+<li>After the page loads scale.js will be executed and check all img tags for data-src attributes. If found it will set the src of the img to <code>/img/fleximg_scale/{IMG_WIDTH}/{IMG_HEIGHT}/{IMG_FILEPATH}</code>.</li>
+<li>If that file exists it will be delivered by the apache. If there is no file the request will be passed to scale.php which will scale the image to the requested dimensions, save it to the desired path and redirect to it again.</li>
+</ol><h2>
+<a name="what-are-the-requirements" class="anchor" href="#what-are-the-requirements"><span class="octicon octicon-link"></span></a>What are the requirements?</h2>
 
 <ul>
 <li>apache </li>
 <li>mod_rewrite</li>
 <li>PHP</li>
 <li>Imagemagick or GD lib</li>
-<li>jquery (only if you dont have it already, install using "$ bower install")</li>
-<li>[optional] jquery.hammer.js (to detect pinch zoom events "$ bower install" or download from <a href="https://github.com/EightMedia/hammer.js">https://github.com/EightMedia/hammer.js</a>)</li>
+<li>jquery (only if you dont have it already, else install it using "$ bower install")</li>
+<li>[optional] jquery.hammer.js (to detect pinch zoom events. use "$ bower install" or download from <a href="https://github.com/EightMedia/hammer.js">https://github.com/EightMedia/hammer.js</a>)</li>
 </ul><h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <ol>
-<li>Make sure your server meets the requirements</li>
+<li>Make sure your server meets the requirements.</li>
 <li>Place the contents of this git project somewhere under the document root (e.g. {document_root}/lib/fleximg/) and install requirements using <code>$ bower install</code>
 </li>
 <li>create the folder /img/fleximg_scale on your server and make sure its writable for the apache user</li>
 <li>
-<p>If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines in after "RewriteEngine On" (make sure in this line <code>RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L]</code> that /lib/fleximg/scale.php points to scale.php on your server)</p>
+<p>If you already have a .htaccess file (in {document_root}/.htaccess) put the following lines after "RewriteEngine On"</p>
 
 <pre><code>RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L]
 </code></pre>
 </li>
-<li><p>Open demos/scale.php to see if it works. You should see a resizable image with cows.</p></li>
+</ol><p>Make sure in this line <code>RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L]</code> that /lib/fleximg/scale.php points to scale.php on your server.</p>
+
+<ol>
+<li>Open demos/scale.php to see if it works. You should see a resizable image with cows.</li>
 <li>
-<p>To insert into your existing projects change the src attribute key in your img tags to data-src and load the following scripts</p>
+<p>To insert the script into your projects change the src attribute key in your existing img tags to data-src and load the following scripts.</p>
 
-<pre><code>&lt;script src="/lib/fleximg/bower_components/jquery/jquery.js"&gt;&lt;/script&gt;
-
-&lt;script src="/lib/fleximg/bower_components/hammerjs/dist/jquery.hammer.js"&gt;&lt;/script&gt;
-
-&lt;script src="/lib/fleximg/scale.js"&gt;&lt;/script&gt;
+<pre><code>&lt;script src="[YOUR_PATH_TO]/jquery/jquery.js"&gt;&lt;/script&gt;
+&lt;script src="[YOUR_PATH_TO]/jquery.hammer.js"&gt;&lt;/script&gt;
+&lt;script src="[YOUR_PATH_TO]/scale.js"&gt;&lt;/script&gt;
 </code></pre>
 </li>
 <li>
-<p>Init fleximg</p>
+<p>Init fleximg with:</p>
 
 <pre><code>&lt;script&gt;
-    scale.init({        //all default values
+    scale.init({        //default values
         fireOnResize:   true,
         fireOnPinchIn:  true,
         fireOnPinch:    true,
@@ -119,24 +122,18 @@ RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L]
 </ol><h2>
 <a name="test-configuration" class="anchor" href="#test-configuration"><span class="octicon octicon-link"></span></a>Test configuration</h2>
 
-<p>If you are having trouble with the setup open http://[your_host]/lib/fleximg/testconfiguration.php in your browser. It will check the following things and probably help you with getting your setup right:</p>
+<p>Open http://[your_host]/lib/fleximg/testconfiguration.php in your browser. It will check the following things and probably help you with getting your setup right.</p>
 
-<ul>
-<li>Apache modules (Imagemagick/gdlib)</li>
-<li>image cache folder location (/img/fleximg_scale)</li>
-<li>image cache folder rights</li>
-<li>.htaccess location</li>
-<li>.htaccess setup</li>
-</ul><h2>
+<h2>
 <a name="client-options" class="anchor" href="#client-options"><span class="octicon octicon-link"></span></a>Client Options</h2>
 
 <h3>
-<a name="javascript-as-parameter-when-calling-scaleinitarray-options" class="anchor" href="#javascript-as-parameter-when-calling-scaleinitarray-options"><span class="octicon octicon-link"></span></a>Javascript as parameter when calling scale.init(Array options)</h3>
+<a name="javascript-as-parameter-when-calling-scaleinit-array-options" class="anchor" href="#javascript-as-parameter-when-calling-scaleinit-array-options"><span class="octicon octicon-link"></span></a>Javascript as parameter when calling scale.init (Array options)</h3>
 
 <h4>
 <a name="steps-int" class="anchor" href="#steps-int"><span class="octicon octicon-link"></span></a>steps (int)</h4>
 
-<p>If the exact display size of is always roundet up so it can be evenly divided by the steps value to make the caching more efficient and prevent creating thousands of versions of one file.</p>
+<p>If the exact display size of is always rounded up so it can be evenly divided by the steps value to make the caching more efficient and prevent creating thousands of versions of one file.</p>
 
 <h4>
 <a name="fireonresize-bool" class="anchor" href="#fireonresize-bool"><span class="octicon octicon-link"></span></a>fireOnResize (bool)</h4>
@@ -151,28 +148,28 @@ RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L]
 <h4>
 <a name="fireonpinchin-bool" class="anchor" href="#fireonpinchin-bool"><span class="octicon octicon-link"></span></a>fireOnPinchIn (bool)</h4>
 
-<p>... on Hammer.js pinchIn event</p>
+<p>... on hammer.js pinchIn event</p>
 
 <h4>
 <a name="fireonpinchout-bool" class="anchor" href="#fireonpinchout-bool"><span class="octicon octicon-link"></span></a>fireOnPinchOut (bool)</h4>
 
-<p>... on Hammer.js pinchOut event</p>
+<p>... on hammer.js pinchOut event</p>
 
 <h4>
 <a name="fireonpinch-bool" class="anchor" href="#fireonpinch-bool"><span class="octicon octicon-link"></span></a>fireOnPinch (bool)</h4>
 
-<p>... on Hammer.js pinch event</p>
+<p>... on hammer.js pinch event</p>
 
 <h4>
 <a name="hidpi_multiplier-float-01-1" class="anchor" href="#hidpi_multiplier-float-01-1"><span class="octicon octicon-link"></span></a>hidpi_multiplier (float [0.1-1])</h4>
 
-<p>adjust delivery size images for hidpi screens (hidpi_multiplier will be multiplied with the calculated multiplier [screen_real_pixel_width]/[screen_fake_pixel_width])</p>
+<p>Adjust delivery size images for hidpi screens (hidpi_multiplier will be multiplied with the calculated multiplier [screen_real_pixel_width]/[screen_fake_pixel_width]).</p>
 
 <h2>
 <a name="server-options" class="anchor" href="#server-options"><span class="octicon octicon-link"></span></a>Server Options</h2>
 
 <h3>
-<a name="php-as-parameter-when-calling-new-fleximgarray-options-in-scalephp" class="anchor" href="#php-as-parameter-when-calling-new-fleximgarray-options-in-scalephp"><span class="octicon octicon-link"></span></a>PHP as parameter when calling new Fleximg(Array options) in scale.php</h3>
+<a name="php-as-parameter-when-calling-new-fleximg-array-options-in-scalephp" class="anchor" href="#php-as-parameter-when-calling-new-fleximg-array-options-in-scalephp"><span class="octicon octicon-link"></span></a>PHP as parameter when calling new Fleximg (Array options) in scale.php.</h3>
 
 <h4>
 <a name="steps-int-1" class="anchor" href="#steps-int-1"><span class="octicon octicon-link"></span></a>steps (int)</h4>
@@ -182,21 +179,14 @@ RewriteRule img/fleximg_scale/. /lib/fleximg/scale.php [L]
 <h4>
 <a name="use_gdlib-bool" class="anchor" href="#use_gdlib-bool"><span class="octicon octicon-link"></span></a>use_gdlib (bool)</h4>
 
-<p>Make fleximg use gdlib instead of imagemagick</p>
+<p>Make fleximg use gdlib instead of imagemagick.</p>
 
 <h4>
 <a name="jpeg_compression-integer-1-100" class="anchor" href="#jpeg_compression-integer-1-100"><span class="octicon octicon-link"></span></a>jpeg_compression (integer [1-100])</h4>
 
-<p>adjust jpeg compression</p>
+<p>adjust jpeg compression.</p>
 
 <h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
-
-<ol>
-<li>Set the src of img tags to the data-src attribute and make sure to create style definition which affect the image dimension.</li>
-<li>After the page loads scale.js will be executed and check all img tags for data-src attributes. If found it will set the src of the img to <code>/img/fleximg_scale/{IMG_WIDTH}/{IMG_HEIGHT}/{IMG_FILEPATH}</code>.</li>
-<li>If that file exists it will be delivered by the apache. If there is no file the request will be passed to scale.php which will scale the image to the requested dimensions, save it to the desired path and redirect to it again.</li>
-</ol><h2>
 <a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
 
 <ul>
