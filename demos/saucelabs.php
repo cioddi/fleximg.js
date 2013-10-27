@@ -35,12 +35,12 @@
 
 	<img id="img_2" data-src="/img/test.jpg" class="block_center" >
 
-	<script src="/bower_components/jquery/jquery.js"></script>
+	<script src="../bower_components/jquery/jquery.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<script src="/bower_components/hammerjs/dist/jquery.hammer.js"></script>
-	<script src="/scale.js"></script>
+	<script src="../bower_components/hammerjs/dist/jquery.hammer.js"></script>
+	<script src="../fleximg.js"></script>
 	<script>
-		scale.init();
+		fleximg_js.init();
 
 	  $(function() {
 	    $( "#slider" ).slider({
@@ -51,14 +51,14 @@
 	    		$('#slider_display > .value').html(ui.value);
 	    		$('.img_1').css('width',ui.value+'%');
 
-	    		scale.latestResizeRefresh();
+	    		fleximg_js.latestResizeRefresh();
 	    	}
 	    });
 	  });
 
 	  setWidth = function(value){
 	  	$('.img_1').css('width',value+'px');
-	    scale.latestResizeRefresh();
+	    fleximg_js.refresh();
 	  }
 
 	</script>

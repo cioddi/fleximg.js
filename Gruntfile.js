@@ -17,12 +17,12 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/<%= pkg.name %>.min.js': ['scale.js']
+          'dist/<%= pkg.name %>.min.js': ['fleximg.js']
         }
       }
     },
     jshint: {
-      files: ['Gruntfile.js', 'scale.js']
+      files: ['Gruntfile.js', 'fleximg.js']
     },
     compress: {
       main: {

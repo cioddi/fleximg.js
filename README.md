@@ -54,12 +54,12 @@ catch the request for that image file
 
 		<script src="/lib/fleximg/bower_components/hammerjs/dist/jquery.hammer.js"></script>
 
-		<script src="/lib/fleximg/scale.js"></script>
+		<script src="/lib/fleximg/fleximg.js"></script>
 
 7. Init fleximg
 
 		<script>
-			scale.init({ 		//all default values
+			fleximg_js.init({ 		//all default values
 				fireOnResize:	true,
 				fireOnPinchIn:	true,
 				fireOnPinch:	true,
@@ -82,7 +82,7 @@ If you are having trouble with the setup open http://[your_host]/lib/fleximg/tes
 
 
 ##Client Options
-###Javascript as parameter when calling scale.init(Array options)
+###Javascript as parameter when calling fleximg_js.init(Array options)
 
 ####steps (int)
 If the exact display size of is always roundet up so it can be evenly divided by the steps value to make the caching more efficient and prevent creating thousands of versions of one file.
@@ -119,7 +119,7 @@ adjust jpeg compression
 
 ##Usage
 1. Set the src of img tags to the data-src attribute and make sure to create style definition which affect the image dimension.
-2. After the page loads scale.js will be executed and check all img tags for data-src attributes. If found it will set the src of the img to ```/img/fleximg_scale/{IMG_WIDTH}/{IMG_HEIGHT}/{IMG_FILEPATH}```.
+2. After the page loads fleximg.js will be executed and check all img tags for data-src attributes. If found it will set the src of the img to ```/img/fleximg_scale/{IMG_WIDTH}/{IMG_HEIGHT}/{IMG_FILEPATH}```.
 3. If that file exists it will be delivered by the apache. If there is no file the request will be passed to scale.php which will scale the image to the requested dimensions, save it to the desired path and redirect to it again.
 
 ##Changelog
