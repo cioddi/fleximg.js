@@ -1,3 +1,4 @@
+#!/bin/bash
 READY_FILE="connect-ready-$RANDOM"
 
 sudo apt-get update
