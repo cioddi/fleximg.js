@@ -19,14 +19,15 @@ fleximg_js = {
     steps: 50,
     img_folder: '/img',
     hidpi_multiplier: 1,
-    imagecache_url: false
+    remote_imagecache_url: false,
+    imagecache_folder: 'fleximg_scale'
   },
   getOptionsObject: function(options) {
     return $.extend(fleximg_js.defaultOptions, options);
   },
   applyImagecacheUrl: function() {
-    if (fleximg_js.imagecache_url) {
-      fleximg_js.img_folder = fleximg_js.imagecache_url + fleximg_js.img_folder;
+    if (fleximg_js.remote_imagecache_url) {
+      fleximg_js.img_folder = fleximg_js.remote_imagecache_url;
     }
   },
   applyOptions: function(options) {
@@ -101,7 +102,7 @@ fleximg_js = {
         if (resize) {
 
           $(item).attr('current-size', width);
-          $(item).attr('src', fleximg_js.img_folder + '/fleximg_scale/' + width + '/0' + data_src);
+          $(item).attr('src', fleximg_js.img_folder + '/' + fleximg_js.imagecache_folder + '/' + width + '/0' + data_src);
 
 
         } else if (typeof $(item).attr('src') === 'undefined') {
