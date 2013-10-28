@@ -6,7 +6,7 @@ fleximg_js = {
     fleximg_js.applyOptions(options);
 
     fleximg_js.applyImagecacheUrl();
-    console.log(fleximg_js);
+
 
     setTimeout(fleximg_js.refresh, 500);
   },
@@ -33,7 +33,6 @@ fleximg_js = {
   applyOptions: function(options) {
     options = fleximg_js.getOptionsObject(options);
 
-    console.log(options);
     for (var key in options) {
       if (options.hasOwnProperty(key)) {
         switch (key) {
