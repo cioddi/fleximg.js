@@ -26,13 +26,11 @@
 		}
 	</style>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="assets/main.css" />
 </head>
 <body>
-	<div id="slider" class="block_center"></div>
-	<div id="slider_display" class="block_center"><span class="value">20</span> %</div>
-	<div class="text_center"><p>Image requests: <span class="request_counter">0</span></p></div>
 	<section id="demo">
-			<p class="center">Drag the slider to scale the image. This will simulate a request.<br> Open your network panel and see the magic happen.</p>
+			<p class="center">Drag the slider to scale the image. This will simulate a request.</p>
 
 			<table>
 				<tbody>
@@ -42,17 +40,16 @@
 				    <th>Size</th>
 				  </tr>
 				  <tr>
-				    <td id="display_request_counter">1</td>
-				    <td id="display_resolution">400px x 300px</td>
-				    <td>400kb</td>
+				    <td id="display_request_counter">0</td>
+				    <td id="display_resolution"></td>
+				    <td id="display_filesize"></td>
 				  </tr>
 				</tbody>
 			</table>
 
-			<input type="range" name="points" min="1" max="100">
-			<img src="/img/demo-1.jpg" alt="">
+			<input id="slider" type="range" name="points" min="1" max="100" value="20">
 
-			<img id="img_1" data-src="/img/test.jpg" class="block_center" >
+			<img id="img_1" data-src="/img/test.jpg" class="block_center" style="width:20%;">
 		</section>
 
 	<script src="../bower_components/json3/lib/json3.min.js"></script>
@@ -64,38 +61,55 @@
 		fleximg_js.init();
 
 	  $(function() {
-	    $( "#slider" ).slider({
-	    	max:100,
-	    	min:1,
-	    	value:20,
-	    	slide:function(event,ui){
-	    		$('#slider_display > .value').html(ui.value);
-	    		$('#img_1').css('width',ui.value+'%');
+	    $( "#slider" ).on('change',function(){
+	    		$('#img_1').css('width',$( "#slider" ).val()+'%');
 
 	    		fleximg_js.refresh();
 
-	    		refreshCounter();
-	    	}
-	    });
+	    	});
 	  });
 
-	  refreshCounter = function(){
-	  	setTimeout(function(){
-	  		if(lastSrc !== $('#img_1').attr('src'))request_counter = request_counter + 1;
-	  		$('#request_counter').html(request_counter);
-	  		lastSrc = $('#img_1').attr('src');
-  		},2000);
-	  }
+	  // refreshCounter = function(){
+	  // 	setTimeout(function(){
+	  // 		if(lastSrc !== $('#img_1').attr('src'))request_counter = request_counter + 1;
+	  // 		$('#display_request_counter').html(request_counter);
+	  // 		lastSrc = $('#img_1').attr('src');
+  	// 	},2000);
+	  // }
 
 	  lastSrc = '';
 	  request_counter = 0;
 
-	  refreshCounter();
+	  // refreshCounter();
 
-	  setWidth = function(value){
-	  	$('.img_1').css('width',value+'px');
-	    fleximg_js.refresh();
-	  }
+	  function returnImageResolution(el) {
+			var t = new Image();
+			t.src = $(el).attr('src');
+			return t.width + 'px x ' + t.height + 'px';
+		}
+
+		function displayImageFilesize(src){
+			var xhr = new XMLHttpRequest();
+			xhr.open('HEAD', src, true);
+			xhr.onreadystatechange = function(){
+			  if ( xhr.readyState == 4 ) {
+			    if ( xhr.status == 200 ) {
+			      $('#display_filesize').html((xhr.getResponseHeader('Content-Length')/1000 + ' kb'));
+			    }
+			  }
+			};
+			xhr.send(null);
+		}
+
+	  $('#img_1').on('load',function(ev){
+	  	console.log(ev);
+			request_counter = request_counter + 1;
+  		$('#display_request_counter').html(request_counter);
+
+  		$('#display_resolution').html(returnImageResolution($('#img_1')[0]));
+
+  		displayImageFilesize($('#img_1').attr('src'));
+	  });
 
 	</script>
 </body>
