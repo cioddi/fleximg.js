@@ -51,7 +51,7 @@
 	    		$('#slider_display > .value').html(ui.value);
 	    		$('.img_1').css('width',ui.value+'%');
 
-	    		fleximg_js.latestResizeRefresh();
+	    		fleximg_js.refresh();
 	    	}
 	    });
 	  });
