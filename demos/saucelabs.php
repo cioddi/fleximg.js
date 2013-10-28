@@ -35,7 +35,7 @@
 
 	<img id="img_2" data-src="/img/test.jpg" class="block_center" >
 
-	<script src="../bower_components/jquery/jquery.js"></script>
+	<script src="assets/jquery.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="../bower_components/hammerjs/dist/jquery.hammer.js"></script>
 	<script src="../fleximg.js"></script>

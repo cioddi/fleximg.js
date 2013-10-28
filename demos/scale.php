@@ -56,7 +56,7 @@
 		</section>
 
 	<script src="../bower_components/json3/lib/json3.min.js"></script>
-	<script src="/js/vendor/jquery-1.10.1.min.js"></script>
+	<script src="assets/jquery.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="../bower_components/hammerjs/dist/jquery.hammer.js"></script>
 	<script src="../fleximg.js"></script>
