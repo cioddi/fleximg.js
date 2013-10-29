@@ -8,6 +8,7 @@ Responsive image loader - Automatically resizes image files to fit the desired d
 
 ##Website
 http://www.fleximg.com
+[Documentation](http://fleximg.com/doc/build/Readme.html)
 
 ##What
 
