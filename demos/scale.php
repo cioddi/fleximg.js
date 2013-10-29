@@ -82,10 +82,12 @@
 
 	  // refreshCounter();
 
-	  function returnImageResolution(el) {
+	  function displayImageResolution(el) {
 			var t = new Image();
 			t.src = $(el).attr('src');
-			return t.width + 'px x ' + t.height + 'px';
+			setTimeout(function(){
+	  		$('#display_resolution').html(t.width + 'px x ' + t.height + 'px');
+			},100)
 		}
 
 		function displayImageFilesize(src){
@@ -106,7 +108,7 @@
 			request_counter = request_counter + 1;
   		$('#display_request_counter').html(request_counter);
 
-  		$('#display_resolution').html(returnImageResolution($('#img_1')[0]));
+  		displayImageResolution($('#img_1')[0]);
 
   		displayImageFilesize($('#img_1').attr('src'));
 	  });

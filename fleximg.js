@@ -78,35 +78,36 @@ fleximg_js = {
     fleximg_js[key] = value;
   },
   readjust: function() {
-    $('img').each(function(idx, item) {
-      if ($(item).attr('data-src')) {
-        var width = parseInt($(item).width(), 10);
-        width = Math.floor(width * fleximg_js.getZoomRatio() * fleximg_js.getDevicePixelRatio());
+    $('img[data-src]').each(function(idx, item) {
+      // calculate desired img width
+      var width = parseInt($(item).width(), 10);
+      width = Math.floor(width * fleximg_js.getZoomRatio() * fleximg_js.getDevicePixelRatio());
 
-        if (fleximg_js.steps) width = fleximg_js.applySteps(width);
+      if (fleximg_js.steps) width = fleximg_js.applySteps(width);
 
-        var resize = false;
+      var resize = false;
 
-        if (typeof $(item).attr('current-size') === 'undefined') {
-          resize = true;
-        } else if (parseInt($(item).attr('current-size'), 10) < width &&
-          width > 0) {
-          resize = true;
-        }
+      // check if resize is necessary
+      if (typeof $(item).attr('current-size') === 'undefined') {
+        resize = true;
+      } else if (parseInt($(item).attr('current-size'), 10) < width &&
+        width > 0) {
+        resize = true;
+      }
 
-        var data_src = $(item).attr('data-src');
-        if (data_src.indexOf('http://') === 0 || data_src.indexOf('https://') === 0) data_src = data_src.split('/').splice(3).join('/');
-        if (data_src[0] !== '/') data_src = '/' + data_src;
+      var data_src = $(item).attr('data-src');
+      if (data_src.indexOf('http://') === 0 || data_src.indexOf('https://') === 0) data_src = data_src.split('/').splice(3).join('/');
+      if (data_src[0] !== '/') data_src = '/' + data_src;
 
-        if (resize) {
+      // [re]write img tag src
+      if (resize) {
 
-          $(item).attr('current-size', width);
-          $(item).attr('src', fleximg_js.img_folder + '/' + fleximg_js.imagecache_folder + '/' + width + '/0' + data_src);
+        $(item).attr('current-size', width);
+        $(item).attr('src', fleximg_js.img_folder + '/' + fleximg_js.imagecache_folder + '/' + width + '/0' + data_src);
 
 
-        } else if (typeof $(item).attr('src') === 'undefined') {
-          $(item).attr('src', data_src);
-        }
+      } else if (typeof $(item).attr('src') === 'undefined') {
+        $(item).attr('src', data_src);
       }
     });
   },
