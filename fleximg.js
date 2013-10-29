@@ -20,7 +20,8 @@ fleximg_js = {
     img_folder: '/img',
     hidpi_multiplier: 1,
     remote_imagecache_url: false,
-    imagecache_folder: 'fleximg_scale'
+    imagecache_folder: 'fleximg_scale',
+    onImageLoad: false
   },
   getOptionsObject: function(options) {
     return $.extend(fleximg_js.defaultOptions, options);
@@ -102,12 +103,17 @@ fleximg_js = {
       // [re]write img tag src
       if (resize) {
 
+        if (typeof item.attributes['src'] === 'undefined') {
+          // on initial src setting
+          if (fleximg_js.onImageLoad && typeof fleximg_js.onImageLoad === 'function') {
+            $(item).on('load', fleximg_js.onImageLoad);
+          }
+        }
+
         $(item).attr('current-size', width);
         $(item).attr('src', fleximg_js.img_folder + '/' + fleximg_js.imagecache_folder + '/' + width + '/0' + data_src);
 
 
-      } else if (typeof $(item).attr('src') === 'undefined') {
-        $(item).attr('src', data_src);
       }
     });
   },
